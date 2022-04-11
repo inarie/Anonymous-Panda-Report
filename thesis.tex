@@ -1,30 +1,23 @@
 \RequirePackage{amsmath}% fixes warning
-
 \documentclass[runningheads]{llncs}
 
 \input{settings}
-
 %makeindex thesis.nlo -s nomencl.ist -o thesis.nls
 \begin{document}
-\pagenumbering{roman}
-\selectlanguage{portuguese}
+% \pagenumbering{gobble}
 
-\input{chapters/0_capa}
-\input{chapters/0_resumo.tex}
+\input{chapters/0_cover.tex}
 \input{chapters/0_abstract.tex}
-\input{chapters/0_agradecimentos}
-
+\input{chapters/0_resumo.tex}
+\input{chapters/0_acknowledgements.tex}
 
 \bfseries
 \tableofcontents
 \normalfont
 
-
 \listoffigures
-
 \listoftables
 
-\input{chapters/0_acrónimos}
 
 %% Fix for the nomenclature spacing
 \newlength{\nomitemorigsep}
@@ -37,17 +30,23 @@
 \setcounter{page}{1}
 \pagenumbering{arabic}
 %\linenumbers
-\input{chapters/1_Capítulo}
+\input{chapters/1_introduction}
 \clearpage
-\input{chapters/2_Capítulo}
+\input{chapters/2_state_of_art}
 \clearpage
-\input{chapters/3_Capítulo}
+\input{chapters/3_prototype}
 \clearpage
-%% add as many chapters as needed, each in its own file .tex
+\input{chapters/4_methodology}
+\clearpage
+\input{chapters/5_conclusion}
 
 %\nolinenumbers
 
-% ---- References ----
+% ---- Bibliography ----
 \bibliographystyle{IEEEtran}
 \bibliography{mybibliography.bib}
+
+\appendix
+\input{appendix}
+
 \end{document}
