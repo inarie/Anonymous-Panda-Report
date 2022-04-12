@@ -1,0 +1,29 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"*.nlo": true,
+			"*.gz": true,                                                                       
+			"*.aux": true,
+			"*.bbl": true,
+			"*.blg": true,
+			"*.fdb_latexmk": true,
+			"*.fls": true,
+			"*.lof": true,
+			"*.log": true,
+			"*.lot": true,
+			"*.out": true,
+			"*.toc": true,
+			".gitignore": true,
+			"settings.tex": true,
+			"lincs.cls": true,
+			"splncs04.bst": true,
+			"llncs.cls": true,
+			"thesis.pdf": true
+		}
+	}
+}
