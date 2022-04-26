@@ -14,8 +14,12 @@
 \bfseries
 \tableofcontents
 \normalfont
+\clearpage
 
+\renewcommand{\listfigurename}{\centering\Large\textbf{List of Figures}}
 \listoffigures
+\clearpage
+\renewcommand{\listtablename}{\centering\Large\textbf{List of Tables}}
 \listoftables
 
 \input{chapters/0_acronyms}
@@ -35,11 +39,15 @@
 \clearpage
 \input{chapters/2_state_of_art}
 \clearpage
-\input{chapters/3_prototype}
+\input{chapters/3_implementation}
 \clearpage
 \input{chapters/4_methodology}
 \clearpage
-\input{chapters/5_conclusion}
+\input{chapters/5_results}
+\clearpage
+\input{chapters/6_discussion}
+\clearpage
+\input{chapters/7_conclusion}
 
 %\nolinenumbers
 
