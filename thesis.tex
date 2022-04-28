@@ -4,7 +4,7 @@
 \input{settings}
 %makeindex thesis.nlo -s nomencl.ist -o thesis.nls
 \begin{document}
-% \pagenumbering{gobble}
+\pagenumbering{gobble}
 
 \input{chapters/0_cover.tex}
 \input{chapters/0_abstract.tex}
@@ -39,21 +39,13 @@
 \clearpage
 \input{chapters/2_state_of_art}
 \clearpage
-\input{chapters/3_implementation}
-\clearpage
-\input{chapters/4_methodology}
-\clearpage
-\input{chapters/5_results}
-\clearpage
-\input{chapters/6_discussion}
-\clearpage
-\input{chapters/7_conclusion}
 
 %\nolinenumbers
 
 % ---- Bibliography ----
 \bibliographystyle{IEEEtran}
 \bibliography{mybibliography.bib}
+\clearpage
 
 \appendix
 \input{chapters/0_appendix}
