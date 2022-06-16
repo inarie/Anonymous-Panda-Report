@@ -96,14 +96,21 @@ Nonetheless, the creation and use of custom metahumans has already improved than
 
 Moreover, because this is a resource-intensive application, another difficulty is how people will utilize it. As a result, one of the problems is figuring out how to develop this program to reach everyone who needs it. 
 
-Finally, in order to assess the feasibility of this approach, the following methodology was employed.
-
 \subsection{Methodology}
-To assess the feasibility of the previously described approach and test user's empathy with the metahumans, a controlled experiment will test whether this virtual avatars are able to convey the same emotional depth as a real person (\textbf{RQ\textsubscript{1}}).
+To assess the feasibility of the previously described approach and test user's empathy with the metahumans, a controlled experiment that was accepted by the university's Data Protection Officer and authorized by the Ethics Committee, evaluated whether these virtual avatars are able to convey the same emotional depth as a real person (\textbf{RQ\textsubscript{1}}).
 
-\makebox[\textwidth]{\color{orange} * IN PROGRESS *}
+We conducted a between-subjects experiment to assess if our independent variable stimulus --- which has three levels, metahuman (G\textsubscript{1}), real person (G\textsubscript{2}), and transcript (G\textsubscript{3}) --- had an effect on participants' cognitive empathy (CE) and affective empathy (AE). We also assess whether the video had any effect on authenticity and social presence perceived by the participants. Each participant was exposed to the previously mentioned stimulus levels through the following randomly selected tests: a) pre-recorded metahuman, b) pre-recorded person, c) transcript from the previous pre-recorded contents (see Appendix \ref{text:story}).
 
-Table \ref{tab:dataset} summarizes the information about each dataset.
+The metahuman was created to match the appearance of the real person (Figure 8) as close as possible while keeping performance levels high (by using only optimized assets). This was done in order to avoid introducing excessive third-variable bias \cite{ROT19}, and as a way to balance the social presence levels in the metahuman and real person video conditions. The story was chosen from a specific \textit{subreddit} (i.e., an online community where people ask others for advice) based on the amount of \textit{upvotes} (1500) and number of comments (304) received on Reddit, as it provides a metric on user engagement and, therefore, we believe will help elicit empathy in the participants.
+
+\begin{figure}[h!]
+\includegraphics[width=\textwidth]{figures/personavatar.jpg}
+\centering
+\caption{Different expressions in both the custom metahuman and the actor}
+\end{figure}
+
+\subsubsection{Participants}
+The dataset was collected online in 2022, and Table \ref{tab:dataset} shows an overview of the information contained within it. Participants were required to be at least 18 years old and needed to be college students. They were recruited using email and social media groups, and they were given a general overview of the study's topic. After cleaning, the dataset contained 48 responses (25 men, 23 women). Participants’ ages ranged from 18 to 45 (\textit{M}=23.9, \textit{SD}=5.7).
 
 \begin{table}[!htb]
     \centering
@@ -117,6 +124,7 @@ Table \ref{tab:dataset} summarizes the information about each dataset.
 		\small Demographic Data  & \small & \small Yes\\
         \small Baseline Empathy Levels  & \small & \small Yes\\
         \small Cognitive and Affective Empathy Levels  & \small & \small Yes\\
+        \small Social Presence Levels  & \small & \small Yes\\
         \hline
 		
         \multicolumn{3}{c}{Usage in this study}\\
@@ -125,39 +133,47 @@ Table \ref{tab:dataset} summarizes the information about each dataset.
 		
 		\hline\\
 	\end{tabular*}
-	\caption{Summary of the datasets used in study one}
+	\caption{Summary of the dataset used in the study}
 	\label{tab:dataset}
 \end{table}
 
-\subsubsection{Participants}
+Those who agreed to participate (\textit{N}=48) were first given an informed consent form. An independent samples design was used for this experiment, participants were asked to fill out basic demographic questions and a personality questionnaire \cite{SPR03} used to measure their baseline levels of empathy before our stimulus. Then they were redirected to one of the three groups of content (G\textsubscript{1}, G\textsubscript{2}, and G\textsubscript{3}) using \cite{FER19} and finally, asked some follow-up questions.
 
-\makebox[\textwidth]{\color{red} * TO-DO *}
+Regarding the score for baseline empathy levels, they can vary from 0 to 64 \cite{SPR09}. Males tend to score in the range of 43.46 to 44.45 on this measure, while females tend to score in the range of 44.62 to 48.93 \cite{SPR09}. In comparison, the mean (\textit{M}) scores in our study for males were 47.08, with a standard deviation (\textit{SD}) of 5.54, whereas females were 48.65, with a \textit{SD} of 7.49, indicating that our male sample was slightly above average and our female sample was among the average results.
 
 \subsubsection{Procedure}
+To recruit participants, an online questionnaire was created and distributed through social media groups, along with emails spread to Madeira University's general student population. Participants (\textit{N}=48) who agreed to participate in the study were first given an informed consent form and properly informed on the study's broad, general topic. 
 
-\makebox[\textwidth]{\color{red} * TO-DO *}
+To prevent revealing the true goal of the experiment and thereby distorting the results, participants were asked to fill out basic demographic questions as well as some general questions about themselves from the Big Five Inventory \cite{JOH91} in addition to the Toronto Empathy Questionnaire \cite{SPR03}. They were then redirected to one of three groups of content (G\textsubscript{1}, G\textsubscript{2}, and G\textsubscript{3}) through \cite{FER19} before being asked to complete a questionnaire meant to assess participants' empathy levels in response to the randomly assigned stimulus, as proposed by  \cite{ROT19, ZIB19}.
+
+As mentioned before, the pre-stimulus questionnaire (see Appendix \ref{fig:pre}) used the Toronto Empathy Questionnaire \cite{SPR03}, which consists of 16 items (e.g., "I become irritated when someone cries", 1=strongly disagree, to 5=strongly agree), as a control variable. Five items from the Big Five Inventory \cite{JOH91} were incorporated into the questionnaire to dispel any suspicions regarding the study's genuine goal.
+
+Regarding the pos-stimulus questionnaire (see Appendix \ref{fig:videoPost} and \ref{fig:transcriptPost}), participants were requested to answer questions, related to the gathering of dependent measures, on a seven-point Likert-type scale (1=totally disagree, 7=totally agree), based on the work of Bailenson et al. \cite{BAI03}.
+
+We used four questions to assess the video's perceived authenticity and social presence, presenting the statements: "I feel that the person is watching me and is aware of my presence", "The thought that the person is not a real person crosses my mind often", "The person appears to be conscious and alive to me", and "I perceive the person as being only a computerized image, not as a real person", with the above-noted Likert-type scale.
+
+Then, empathy was tested in both video and transcript groups by using items adapted from the Interpersonal Reactivity Index \cite{DAV83} that deal with  CE and AE. Three items were used to test CE: "I understand what made her get upset", "Her reactions to the situation are understandable", and “I understand her point of view”. Afterwards three items were used to measure AE: "I can relate to her problem", "When I see someone in an unfair situation, I feel frustrated", and “I feel that her emotions are genuine”.
+
+Finally, participants could describe in an open-ended question what made them empathize and/or relate to the person in the video/transcription, as well as what they did not like.
 
 \subsubsection{Hypotheses and Analyses}
-To answer \textbf{RQ\textsubscript{1}} (Can virtual avatars elicit the same emotional response as human-to-human interactions?), we tested if our independent variable stimuli --- which has three levels, metahuman (G\textsubscript{1}), real person (G\textsubscript{2}), and transcript (G\textsubscript{3}) --- had an effect on participants' cognitive and affective empathy. Because the participants' CE and AE are supposed to indicate if the feelings and emotions conveyed via stimuli were understood, it's reasonable to assume that those with greater baseline empathy levels would comprehend the feelings and emotions better.
+To answer \textbf{RQ\textsubscript{1}} (Can virtual avatars elicit the same emotional response as human-to-human interactions?), we tested if our independent variable stimulus --- which has three levels, metahuman (G\textsubscript{1}), real person (G\textsubscript{2}), and transcript (G\textsubscript{3}) --- had an effect on participants' cognitive and affective empathy. Because the participants' CE and AE are supposed to indicate if the feelings and emotions conveyed via stimulus were understood, it's reasonable to assume that those with greater baseline empathy levels would comprehend the feelings and emotions better.
 
 Therefore, our hypotheses were:
 
 \textbf{\textit{H}\textsubscript{1}} - All stimuli conditions can elicit cognitive emotion in their respective groups.
 
-\textbf{\textit{H}\textsubscript{2}} - The metahuman video stimuli elicit more affective empathy than the person video stimuli.
+\textbf{\textit{H}\textsubscript{2}} - The metahuman video stimulus elicit more affective empathy than the person video stimulus.
 
-\textbf{\textit{H}\textsubscript{3}} - The person video stimuli elicit more affective empathy than the transcript stimuli.
+\textbf{\textit{H}\textsubscript{3}} - The person video stimulus elicit more affective empathy than the transcript stimulus.
 
-\makebox[\textwidth]{\color{orange} * IN PROGRESS *}
+To test \textbf{\textit{H}\textsubscript{1}}-\textbf{\textit{H}\textsubscript{3}}, we tried to see if the cognitive and affective empathy of each group differed significantly. This required a multivariate analysis method because we look at more than two variables (or factors) and how they might impact our experiment. As a result, we utilized the Kruskal-Wallis H test for ordinal, nonparametric data to see if there were any statistically significant differences in CE and AE between the three conditions.
 
-% The game name is a categorical variable, which we can use to group game mentions. Thus, to test H1–H3, we needed to test if the scores of the player traits, game elements, and game playing styles were significantly different per group. This required a multivariate analysis method because each one of these constructs is represented by more than one score. However, it was not possible to use a multivariate analysis of variance (MANOVA) because our data violated the assumptions of normality (verified with the Kolmogorov-Smirnov test) and homogeneity of variances (verified with Levene’s test). Therefore, we used the npmv package (Nonparametric Comparison of Multivariate Samples, v. 2.4.0; [23]) for the statistical software R (v. 3.5.2, 2018), which uses rank-based approaches to test the overall null hypothesis (see [9, 10] for the underlying theory). The package calculates four different test statistics, which all consistently led to the same results in our tests. Thus, we chose to report only the Wilks’ Lambda (λ) type test statistics [52] because it is the default one to use according to the package’s manual [23]. After verifying the overall significance of each relationship, we followed up with one-way Kruskal-Wallis (KW) tests on SPSS (v. 23, IBM, 2015) to find out which individual types of scores were significant. Additionally, we calculated the effect size η 2 from the KW test statistic H (see [26, 33]) and produced charts to easily compare the median scores per game.
-
-The retrieved data was analyzed in the IBM SPSS statistics software, using a statistical significance level of 0.05.
-A Kruskal-Wallis H test was used for ordinal, nonparametric data to assess whether there were any statistically significant differences between the 3 conditions in terms of cognitive and affective empathy. A Mann-Whitney U test was also performed to compare if there were differences in social presence between the metahuman and the real person video conditions.
+We also wanted to investigate if the metahuman and real person groups' levels of social presence differed significantly. This required a bivariate analysis method because we only look at two variables (or factors). As a result, we used a Mann-Whitney U test to see if there were any changes in social presence between the metahuman and real-life video situations. Finally, all this data was analyzed in the IBM SPSS statistics software (v.28, 2021), using a statistical significance level of 0.05.
 
 \subsubsection{Results}
 
-\makebox[\textwidth]{\color{red} * TO-DO *}
+\makebox[\textwidth]{\color{orange} * IN PROGRESS *}
 
 \subsubsection{Discussion}
 
