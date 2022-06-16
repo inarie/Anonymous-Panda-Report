@@ -25,7 +25,7 @@ This should result in the creation of ``thesis.pdf``
 
 ---
 
-## People Involved
+## People Involved :busts_in_silhouette:
 
 ### Supervisors   
 **Pedro Campos**  
