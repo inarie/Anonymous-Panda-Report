@@ -99,14 +99,15 @@ Moreover, because this is a resource-intensive application, another difficulty i
 \subsection{Methodology}
 To assess the feasibility of the previously described approach and test user's empathy with the metahumans, a controlled experiment that was accepted by the university's Data Protection Officer and authorized by the Ethics Committee, evaluated whether these virtual avatars are able to convey the same emotional depth as a real person (\textbf{RQ\textsubscript{1}}).
 
-We conducted a between-subjects experiment to assess if our independent variable stimulus --- which has three levels, metahuman (G\textsubscript{1}), real person (G\textsubscript{2}), and transcript (G\textsubscript{3}) --- had an effect on participants' cognitive empathy (CE) and affective empathy (AE). We also assess whether the video had any effect on authenticity and social presence perceived by the participants. Each participant was exposed to the previously mentioned stimulus levels through the following randomly selected tests: a) pre-recorded metahuman, b) pre-recorded person, c) transcript from the previous pre-recorded contents (see Appendix \ref{text:story}).
+We conducted a between-subjects experiment to assess if our independent variable stimulus --- which has three levels, metahuman (G\textsubscript{1}), real person (G\textsubscript{2}), and transcript (G\textsubscript{3}) --- had an effect on participants' cognitive empathy (CE) and affective empathy (AE). We also assess whether the video had any effect on authenticity and social presence perceived by the participants. Each participant was exposed to the previously mentioned stimulus levels through the following randomly selected tests: a) pre-recorded metahuman, b) pre-recorded person, c) transcript from the previous pre-recorded contents (see Appendix \ref{appendix:story}).
 
-The metahuman was created to match the appearance of the real person (Figure 8) as close as possible while keeping performance levels high (by using only optimized assets). This was done in order to avoid introducing excessive third-variable bias \cite{ROT19}, and as a way to balance the social presence levels in the metahuman and real person video conditions. The story was chosen from a specific \textit{subreddit} (i.e., an online community where people ask others for advice) based on the amount of \textit{upvotes} (1500) and number of comments (304) received on Reddit, as it provides a metric on user engagement and, therefore, we believe will help elicit empathy in the participants.
+The metahuman was created to match the appearance of the real person (Figure \ref{fig:customMeta}) as close as possible while keeping performance levels high (by using only optimized assets). This was done in order to avoid introducing excessive third-variable bias \cite{ROT19}, and as a way to balance the social presence levels in the metahuman and real person video conditions. The story was chosen from a specific \textit{subreddit} (i.e., an online community where people ask others for advice) based on the amount of \textit{upvotes} (1500) and number of comments (304) received on Reddit, as it provides a metric on user engagement and, therefore, we believe will help elicit empathy in the participants.
 
 \begin{figure}[h!]
 \includegraphics[width=\textwidth]{figures/personavatar.jpg}
 \centering
 \caption{Different expressions in both the custom metahuman and the actor}
+\label{fig:customMeta}
 \end{figure}
 
 \subsubsection{Participants}
@@ -115,25 +116,25 @@ The dataset was collected online in 2022, and Table \ref{tab:dataset} shows an o
 \begin{table}[!htb]
     \centering
 	\begin{tabular*}{0.8\linewidth}{ @{\extracolsep{\fill}} lcr}
-		\hline
-		\small Year of data collection  & \small & \small 2022\\
-        \small Participants (\textit{N})  & \small & \small 48\\
-		\hline
-		
-        \multicolumn{3}{c}{Collected data}\\
-		\small Demographic Data  & \small & \small Yes\\
-        \small Baseline Empathy Levels  & \small & \small Yes\\
-        \small Cognitive and Affective Empathy Levels  & \small & \small Yes\\
-        \small Social Presence Levels  & \small & \small Yes\\
-        \hline
-		
-        \multicolumn{3}{c}{Usage in this study}\\
-        \small\textbf{RQ\textsubscript{1}} (emotional response)  & \small & \small Yes\\
-        \small\textbf{RQ\textsubscript{2}} (verbal self-disclosure)  & \small & \small No\\
-		
-		\hline\\
+    \hline
+    \small Year of data collection  & \small & \small 2022\\
+    \small Participants (\textit{N})  & \small & \small 48\\
+    \hline
+    
+    \multicolumn{3}{c}{Collected data}\\
+    \small Demographic Data  & \small & \small Yes\\
+    \small Baseline Empathy Levels  & \small & \small Yes\\
+    \small Cognitive and Affective Empathy Levels  & \small & \small Yes\\
+    \small Social Presence Levels  & \small & \small Yes\\
+    \hline
+    
+    \multicolumn{3}{c}{Usage in this study}\\
+    \small\textbf{RQ\textsubscript{1}} (emotional response)  & \small & \small Yes\\
+    \small\textbf{RQ\textsubscript{2}} (verbal self-disclosure)  & \small & \small No\\
+    
+    \hline\\
 	\end{tabular*}
-	\caption{Summary of the dataset used in the study}
+    \caption{Summary of the dataset used in the study}
 	\label{tab:dataset}
 \end{table}
 
@@ -146,9 +147,9 @@ To recruit participants, an online questionnaire was created and distributed thr
 
 To prevent revealing the true goal of the experiment and thereby distorting the results, participants were asked to fill out basic demographic questions as well as some general questions about themselves from the Big Five Inventory \cite{JOH91} in addition to the Toronto Empathy Questionnaire \cite{SPR03}. They were then redirected to one of three groups of content (G\textsubscript{1}, G\textsubscript{2}, and G\textsubscript{3}) through \cite{FER19} before being asked to complete a questionnaire meant to assess participants' empathy levels in response to the randomly assigned stimulus, as proposed by  \cite{ROT19, ZIB19}.
 
-As mentioned before, the pre-stimulus questionnaire (see Appendix \ref{fig:pre}) used the Toronto Empathy Questionnaire \cite{SPR03}, which consists of 16 items (e.g., "I become irritated when someone cries", 1=strongly disagree, to 5=strongly agree), as a control variable. Five items from the Big Five Inventory \cite{JOH91} were incorporated into the questionnaire to dispel any suspicions regarding the study's genuine goal.
+As mentioned before, the pre-stimulus questionnaire (see Appendix \ref{appendix:pre}) used the Toronto Empathy Questionnaire \cite{SPR03}, which consists of 16 items (e.g., "I become irritated when someone cries", 1=strongly disagree, to 5=strongly agree), as a control variable. Five items from the Big Five Inventory \cite{JOH91} were incorporated into the questionnaire to dispel any suspicions regarding the study's genuine goal.
 
-Regarding the pos-stimulus questionnaire (see Appendix \ref{fig:videoPost} and \ref{fig:transcriptPost}), participants were requested to answer questions, related to the gathering of dependent measures, on a seven-point Likert-type scale (1=totally disagree, 7=totally agree), based on the work of Bailenson et al. \cite{BAI03}.
+Regarding the pos-stimulus questionnaire (see Appendix \ref{appendix:videoPost} and \ref{appendix:transcriptPost}), participants were requested to answer questions, related to the gathering of dependent measures, on a seven-point Likert-type scale (1=totally disagree, 7=totally agree), based on the work of Bailenson et al. \cite{BAI03}.
 
 We used four questions to assess the video's perceived authenticity and social presence, presenting the statements: "I feel that the person is watching me and is aware of my presence", "The thought that the person is not a real person crosses my mind often", "The person appears to be conscious and alive to me", and "I perceive the person as being only a computerized image, not as a real person", with the above-noted Likert-type scale.
 
@@ -161,19 +162,99 @@ To answer \textbf{RQ\textsubscript{1}} (Can virtual avatars elicit the same emot
 
 Therefore, our hypotheses were:
 
-\textbf{\textit{H}\textsubscript{1}} - All stimuli conditions can elicit cognitive emotion in their respective groups.
+\textbf{\textit{H}\textsubscript{1}} - All stimulus conditions can elicit the same cognitive emotion.
 
-\textbf{\textit{H}\textsubscript{2}} - The metahuman video stimulus elicit more affective empathy than the person video stimulus.
+\textbf{\textit{H}\textsubscript{2}} - The metahuman video stimulus can elicit more affective empathy than the real person video stimulus.
 
-\textbf{\textit{H}\textsubscript{3}} - The person video stimulus elicit more affective empathy than the transcript stimulus.
+\textbf{\textit{H}\textsubscript{3}} - The person video stimulus can elicit more affective empathy than the transcript stimulus.
 
 To test \textbf{\textit{H}\textsubscript{1}}-\textbf{\textit{H}\textsubscript{3}}, we tried to see if the cognitive and affective empathy of each group differed significantly. This required a multivariate analysis method because we look at more than two variables (or factors) and how they might impact our experiment. As a result, we utilized the Kruskal-Wallis H test for ordinal, nonparametric data to see if there were any statistically significant differences in CE and AE between the three conditions.
 
 We also wanted to investigate if the metahuman and real person groups' levels of social presence differed significantly. This required a bivariate analysis method because we only look at two variables (or factors). As a result, we used a Mann-Whitney U test to see if there were any changes in social presence between the metahuman and real-life video situations. Finally, all this data was analyzed in the IBM SPSS statistics software (v.28, 2021), using a statistical significance level of 0.05.
 
 \subsubsection{Results}
+To evaluate the differences in cognitive and affective empathy across conditions, we performed a Kruskal-Wallis test. The test showed no statistically significant differences in cognitive (\textit{H(2)}=4.30, \textit{p}=.116) or affective empathy (\textit{H(2)}=.618, \textit{p}=.734) for the three conditions (metahuman, \textit{n}=23; real person, \textit{n}=12; transcript, \textit{n}=14). Table \ref{tab:kwhTest} show the results of the Kruskal-Wallis H test and Figure \ref{fig:kwSamples} show the independent-samples from the Kruskal-Wallis H test.
 
-\makebox[\textwidth]{\color{orange} * IN PROGRESS *}
+\begin{table}[!htb]
+	\begin{minipage}{0.44\linewidth}
+        \begin{tabular*}{\linewidth}{ @{\extracolsep{\fill}} lcc}
+        \small & \small CE & \small AE\\
+        \hline
+
+        \small Median & \small 6 & \small 5\\
+        \small Mean & \small 5.88 & \small 5.25\\
+        \small Std. Dev. & \small .981 & \small 1.021\\
+        \hline
+
+        \small \textit{H(2)} & \small 4.301 & \small 0.618\\
+        \small \textit{p} & \small .116 & \small .734\\
+        \hline\\
+        \end{tabular*}
+        \caption{Results between G\textsubscript{1}, G\textsubscript{2}, and G\textsubscript{3}}
+        \label{tab:kwhTest}
+	\end{minipage}\hfill
+    \begin{minipage}{0.55\linewidth}
+        \centering
+        \begin{subtable}{0.3\textwidth}
+            \centering
+            \begin{tabular*}{\linewidth}{ @{\extracolsep{\fill}} lc}
+                \small & \small SP \\
+                \hline
+        
+                \small \textit{U} & \small 121.500 \\
+                \small \textit{Z} & \small -.192 \\
+                \small \textit{p} & \small .848 \\
+                \small \textit{r} & \small .004 \\
+                \hline\\
+            \end{tabular*}
+        \end{subtable}
+        \nextfloat
+        \begin{subtable}{0.5\textwidth}
+            \centering
+            \begin{tabular*}{\linewidth}{ @{\extracolsep{\fill}} lcc}
+                \small & \small Metahuman & \small Person \\
+                \hline
+        
+                \small Median & \small 5 & \small 5\\
+                \small Mean & \small 5.09 & \small 4.91\\
+                \small Std. Dev. & \small 1.041 & \small 1,921\\
+                \hline\\
+            \end{tabular*}
+        \end{subtable}
+        \caption{Results between G\textsubscript{1} and G\textsubscript{2}}\label{tab:MWTest}
+	\end{minipage}\hfill
+\end{table}
+
+\begin{table}[!htb]
+    \begin{minipage}{\linewidth}
+        \centering
+        \begin{subfigure}{0.49\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{figures/KW1.png}
+            \caption{Cognitive Empathy}
+            \label{fig:sub1}
+        \end{subfigure}
+        \begin{subfigure}{0.49\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{figures/KW2.png}
+            \caption{Affective Empathy}
+            \label{fig:sub2}
+        \end{subfigure}
+        \captionof{figure}{Independent-Samples Kruskal-Wallis}
+        \label{fig:kwSamples}
+	\end{minipage}
+\end{table}
+
+These results support our \textbf{\textit{H\textsubscript{1}}}, namely that cognitive empathy is the same for all conditions. However, no statistically significant differences support our \textbf{\textit{H\textsubscript{2}}}, implying that participants' affective empathy was balanced in both metahuman and real person conditions. The same case was observed with our \textbf{\textit{H\textsubscript{3}}}, where there were no statistically significant differences that could indicate that the person video stimulus elicited higher levels of affective empathy than the transcript stimulus.
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{figures/MWSample.png}
+\centering
+\caption{Social Presence per group}
+\label{fig:MWSample}
+\end{figure}
+
+To assess the difference in social presence between the two video conditions, a Mann-Whitney U test was also performed and the results are shown in Table \ref{tab:MWTest}. This test also revealed no significant differences in social presence (\textit{U}=121.500, \textit{Z}=-.192, \textit{p}=.848, \textit{r}=.004) between the metahuman video (\textit{M}=5.09, \textit{SD}=1.041, \textit{n}=23) and the real person video (\textit{M}=4.91, \textit{SD}=1.921, \textit{n}=11). Figure \ref{fig:MWSample} represent the frequency between the social presence levels registered in the metahuman and the real person condition.
 
 \subsubsection{Discussion}
 
