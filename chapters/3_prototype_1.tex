@@ -2,7 +2,7 @@
 As previously stated, living with a mental illness can be isolating and the stigma around mental health issues makes people hesitant to seek professional help. The primary purpose of this thesis is to create a functional prototype capable of connecting people with mental health specialists anonymously, while still maintaining patient-therapist empathy.
 
 \subsection{Approach}
-A working prototype was developed using Unreal Engine Blueprints (a node-based interface to create gameplay elements), the UE4, Metahumans, and Live Link connected to an iPhone's camera. In the prototype, patients can communicate with mental health specialists via video conferencing anonymously, as patient's smartphone functions as a virtual camera that allows the mental health practitioner to see the patient's facial expressions in real-time via a virtual avatar.
+A working prototype was developed using Unreal Engine Blueprints (a node-based interface to create gameplay elements), the UE4, Metahumans, and Live Link connected to an iPhone's camera. In the prototype, patients can communicate with mental health specialists via video conferencing anonymously, as patient's smartphone functions as a virtual camera that allows the mental health practitioner to see the patient's facial expressions in real-time via VA.
 
 Using an Apple device with the TrueDepth sensor and the Live Link Face app, one can capture numerous facial tracking points by creating a depth map of ones’ face while projecting and analyzing over 30,000 invisible dots, as well as capturing an infrared face image. The data collected by the Apple device and app is delivered to the UE4 environment via a directed internet connection maintained between the user's iPhone/iPad and the Unreal Engine. When data is received by Unreal Engine 4, it is evaluated and turned into VA movements via Live Link Plugin, as shown in Figure \ref{fig:facialExpressions} and Figure \ref{fig:blueprintsData}.
 
@@ -111,32 +111,7 @@ The metahuman was created to match the appearance of the real person (Figure \re
 \end{figure}
 
 \subsubsection{Participants}
-The dataset was collected online in 2022. Participants were required to be at least 18 years old and needed to be college students. They were recruited via email and social media groups, and they were given a general overview of the study's topic. After cleaning, the dataset contained 48 responses (25 male, 23 female). Participants’ ages ranged from 18 to 45 (\textit{M}=23.9, \textit{SD}=5.7).
-
-%\begin{table}[!htb]
-%    \centering
-%	\begin{tabular*}{0.8\linewidth}{ @{\extracolsep{\fill}} lcr}
-%    \hline
-%    \small Year of data collection  & \small & \small 2022\\
-%    \small Participants (\textit{N})  & \small & \small 48\\
-%    \hline
-%    
-%    \multicolumn{3}{c}{Collected data}\\
-%    \small Demographic Data  & \small & \small Yes\\
-%    \small Baseline Empathy Levels  & \small & \small Yes\\
-%    \small Cognitive and Affective Empathy Levels  & \small & \small Yes\\
-%    \small Social Presence Levels  & \small & \small Yes\\
-%    \hline
-%    
-%    \multicolumn{3}{c}{Usage in this study}\\
-%    \small\textbf{RQ\textsubscript{1}} (emotional response)  & \small & \small Yes\\
-%    \small\textbf{RQ\textsubscript{2}} (verbal self-disclosure)  & \small & \small No\\
-%    
-%    \hline\\
-%	\end{tabular*}
-%    \caption{Summary of the dataset used in the study}
-%	\label{tab:dataset}
-%\end{table}
+Participants were required to be at least 18 years old and needed to be college students. They were recruited via email and social media groups, and they were given a general overview of the study's topic. Our final sample consists of 48 college students (25 male, 23 female), aged between 18 and 45 (\textit{M}=23.9, \textit{SD}=5.7).
 
 Those who agreed to participate (\textit{N}=48) were first given an informed consent form. An independent samples design was used for this experiment, where participants were asked to fill out basic demographic questions and a self-assessment questionnaire \cite{SPR03} used to measure their baseline levels of empathy before our stimulus. Then they were randomly allocated to one of the three groups of content (G\textsubscript{1}, G\textsubscript{2}, and G\textsubscript{3}) using an online random redirect tool \cite{FER19} and finally, asked some follow-up questions.
 
@@ -149,7 +124,7 @@ To prevent revealing the true goal of the experiment and thereby distorting the 
 
 As mentioned before, the pre-stimulus questionnaire (see Appendix \ref{appendix:pre}) used the Toronto Empathy Questionnaire \cite{SPR03}, which consists of 16 items (e.g., "I become irritated when someone cries", 1=strongly disagree, to 5=strongly agree), as a control variable. Five items from the Big Five Inventory \cite{JOH91} were incorporated into the questionnaire to dispel any suspicions regarding the study's genuine goal.
 
-Regarding the pos-stimulus questionnaire (see Appendix \ref{appendix:videoPost} and \ref{appendix:transcriptPost}), participants were requested to answer questions, related to the gathering of dependent measures, on a seven-point Likert-type scale (1=totally disagree, 7=totally agree), based on the work of Bailenson et al. \cite{BAI03}.
+Regarding the pos-stimulus questionnaire (see Appendix \ref{appendix:videoPost} and \ref{appendix:transcriptPost}), participants were requested to answer questions, related to cognitive and affective empathy  (i.e., our dependent variable), on a seven-point Likert-type scale (1=totally disagree, 7=totally agree), based on the work of Bailenson et al. \cite{BAI03}.
 
 We used four questions to assess the video's perceived authenticity and social presence, presenting the statements: "I feel that the person is watching me and is aware of my presence", "The thought that the person is not a real person crosses my mind often", "The person appears to be conscious and alive to me", and "I perceive the person as being only a computerized image, not as a real person", with the above-noted Likert-type scale.
 
@@ -158,7 +133,7 @@ Then, empathy was tested in both video and transcript groups by using items adap
 Finally, participants could describe in an open-ended question what made them empathize and/or relate to the person in the video/transcription, as well as what they did not like.
 
 \subsubsection{Hypotheses and Analyses}
-To answer \textbf{RQ\textsubscript{1}} (Can virtual avatars elicit the same emotional response as human-to-human interactions?), we tested if our independent variable stimulus --- which has three levels, metahuman (G\textsubscript{1}), real person (G\textsubscript{2}), and transcript (G\textsubscript{3}) --- had an effect on participants' cognitive and affective empathy. Because the participants' CE and AE are supposed to indicate if the feelings and emotions conveyed via stimulus were understood, it's reasonable to assume that those with greater baseline empathy levels would comprehend the feelings and emotions better.
+To answer \textbf{RQ\textsubscript{1}} (Can virtual avatars elicit the same emotional response as human-to-human interactions?), we tested if our independent variable stimulus---which has three levels, metahuman (G\textsubscript{1}), real person (G\textsubscript{2}), and transcript (G\textsubscript{3})---had an effect on participants' cognitive and affective empathy. Because the participants' CE and AE are supposed to indicate if the feelings and emotions conveyed via stimulus were understood, it's reasonable to assume that those with greater baseline empathy levels would comprehend the feelings and emotions better.
 
 Therefore, our hypotheses were:
 
@@ -256,5 +231,13 @@ These results support our \textbf{\textit{H\textsubscript{1}}}, namely that cogn
 To assess the difference in social presence between the two video conditions, a Mann-Whitney U test was also performed and the results are shown in Table \ref{tab:MWTest}. This test also revealed no significant differences in social presence (\textit{U}=121.500, \textit{Z}=-.192, \textit{p}=.848, \textit{r}=.004) between the metahuman video (\textit{M}=5.09, \textit{SD}=1.041, \textit{n}=23) and the real person video (\textit{M}=4.91, \textit{SD}=1.921, \textit{n}=11). Figure \ref{fig:MWSample} represent the frequency between the social presence levels registered in the metahuman and the real person condition.
 
 \subsubsection{Discussion}
+In the present work, we analyzed how metahumans were able to convey the same emotional depth as a real person (\textbf{RQ\textsubscript{1}}). We wanted to see if our independent variable stimulus---metahuman (G\textsubscript{1}), real person (G\textsubscript{2}), and transcript (G\textsubscript{3})---had any influence on participants' cognitive and affective empathy.
 
-\makebox[\textwidth]{\color{red} * TO-DO *}
+We found that all our conditions could elicit participants' cognitive empathy, which means that they were able to put themselves on the side of the storyteller and see the storyteller perspective. However, it is possible to demonstrate cognitive empathy without having any feelings fellow-feeling or sympathy for it. 
+This means that, while the results confirm our \textbf{\textit{H\textsubscript{1}}}, they could be easily skewed because we used a self-reported questionnaire, therefore there's a chance that individuals gave invalid answers \cite{DEM15}.
+
+Regarding our \textbf{\textit{H\textsubscript{2}}}, we did not find significant differences in the level of affective empathy elicited by the avatar versus the real human. As a result, regardless of whether it was conveyed through the avatar or the real person, a self-disclosing story elicited similar levels of AE. Our findings support previous research on similar perceptions of avatars and human stimuli \cite{ALI15, ROT19}. We discovered a positive effect of authenticity on both cognitive and affective empathy, which supports our \textbf{RQ\textsubscript{1}} that realistic avatars, in this case metahumans, may convey the same emotional depth as a real person. This may be interpreted as an indication that high authenticity enables the willingness to accept a different perspective and predict the internal emotional states of others. Another, more limiting interpretation is that the audio for each condition was kept consistent, and so voice was a strong carrier for the perception of empathy. Additional research needs to be done because we did not examine a limited situation with only voice or with altered voices.
+
+Similarly, no significant differences in affective empathy elicited by the person video stimulus versus the transcript were discovered (\textbf{\textit{H\textsubscript{3}}}). As a result, participants' levels of AE were similar whether they heard the narrative from the real person or read the transcript themselves. This could be related to the narrative itself, as it was chosen from a \textit{subreddit} where people ask others for advice and it was a story that everyone can relate to as it is a typical everyday situation that could happen to any of us. Another interpretation might be based on how the person in the video portrayed themselves and how well it reflected the story's emotions because the participants were able to understand that person's circumstances and feelings, just as those who merely read the narrative did.
+
+Finally, we evaluate the difference in social presence between the two video settings (metahuman and real person) in order to validate our \textbf{RQ\textsubscript{1}} that realistic avatars may transmit the same emotional depth as a real person. Our findings revealed no significant differences in social presence between the metahuman video and the real person video. However, these results suggest that our avatars' level of realism can perform just like a real person would and thus be used as a webcam in video conference systems.
