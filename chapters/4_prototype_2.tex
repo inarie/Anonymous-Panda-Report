@@ -3,7 +3,7 @@ When reviewing and testing the Anonymous Face Tracking Panda prototype, we found
 
 When people speak, they frequently make spontaneous hand movements that occur in synchrony with speech and naturally accompany all spoken conversation; such movements are known as gestures \cite{CLO20}. Gestures have a variety of roles in communication, learning, and comprehension for both those who observe them and those who make them. Gestures are especially effective when they resemble the thought they express, which gives them an advantage over words since it adds meaningful and distinct information while reflecting the speaker's underlying knowledge and experiences \cite{CLO20, KAN16B}. According to Feyereisen and de Lannoy \cite{FEY91}, people from all known cultures and language backgrounds gesture. Hence gestures are essential for making connections with others, although styles vary across countries.
 
-Hand gestures, which combine with facial expressions and articulated words, play an important role in conveying our emotions. To create emotional depiction, hand movements usually combine nontrivially with facial expressions \cite{ARJ20}. It is commonly known that a person who utilizes his hands powerfully while sharing his views attracts significantly more attention than a person who only uses his voice to deliver an idea \cite{COO10, WAK18}.
+Hand gestures, which combined with facial expressions and articulated words, play an important role in conveying our emotions. To create emotional depiction, hand movements usually combine nontrivially with facial expressions \cite{ARJ20}. It is commonly known that a person who utilizes his hands powerfully while sharing his views attracts significantly more attention than a person who only uses his voice to deliver an idea \cite{COO10, WAK18}.
 
 As previously stated, the primary purpose of this thesis is to create a functional prototype capable of connecting people with mental health specialists anonymously, while still maintaining patient-therapist empathy. Therefore the addition of hand tracking is a critical step toward our goal in order to get deeper emotional recognition. Because, in addition to facial emotions and body posture, hands are the most significant nonverbal clues to identify specific states in others, such as anxiety states \cite{WAX97, REI22}. 
 
@@ -14,10 +14,11 @@ As previously mentioned, various researchers believe that hand gestures, in conj
 
 While there are a variety of ways to perform hand tracking, such as with virtual reality devices or gloves, we believe that the Leap Motion Controller is the best option for this thesis because it is a practical and small device that does not interfere with the face recognition part.
 
+\subsubsection{Leap Motion Controller and Unreal Plugin}
 The Leap Motion Controller (Figure \ref{fig:exampleLeap}) is a device that connects to a PC or a Mac and allows users to manipulate digital objects using hand motions. It adds a new way to interact with the digital world when combined with other hardware. Programs that interpret gesture-based computing allow users to play games, design, and learn in a hands-on manner. This device maps and tracks the human hand using an infrared scanner and sensor. This data is used to create a digital version of the hand that can manipulate digital objects in real time.
 
 \begin{figure}[!htb]
-\includegraphics[width=0.4\textwidth]{figures/leapMotion.jpg}
+\includegraphics[width=0.6\textwidth]{figures/leapMotion.jpg}
 \centering
 \caption{Example of the Leap Motion tracking}
 \label{fig:exampleLeap}
@@ -28,49 +29,77 @@ In order to connect the existing Anonymous Panda prototype with the hand trackin
 As mentioned, the Leap Motion Controller tracks hands and fingers with low latency and high precision, reporting position, velocity, and orientation. This controller may be placed on a VR headset or used on a tabletop. To incorporate Ultraleap's hand tracking data into a project, the Leap motion Controller system, which runs as a service or daemon, analyzes the images produced by its hardware and sends the analyzed data to the project. Then, the unreal plugin connected to the mentioned service converts the received data to the Unreal coordinate system. Furthermore, the plugin automatically transforms the tracking data to use a left-handed coordinate system and scales distance values to centimeters because the UE uses a left-handed convention for its coordinate system and centimeters as the default unit, whereas the Leap Motion uses a right-handed convention and millimeters as the default unit \cite{ULTP}. Figure \ref{fig:unrealAxes} shows the Unreal coordinate system in relationship to the Leap Motion device in Head Mounted Display (HMD) mode.
 
 \begin{figure}[!htb]
-\includegraphics[width=0.6\textwidth]{figures/unrealAxes.png}
+\includegraphics[width=0.3\textwidth]{figures/unrealAxes.png}
 \centering
 \caption{The Unreal coordinate system in relationship to the Leap Motion device in HMD mode}
 \label{fig:unrealAxes}
 \end{figure}
 
-The Leap Motion controller uses optical sensors and infrared light. Those same sensors have a $150^\circ$ field of view and their effective range extends from approximately 3 to 60 centimeters (see Figure \ref{fig:HMDistance}). Detection and tracking work best when the controller has a clear, high-contrast view of an object’s silhouette. To cope with difficult tracking conditions, the Leap Motion software combines sensor data with an internal model of the human hand.
+When the Leap Motion Controller has a good, high-contrast view of an object's silhouette, it uses infrared light and optical sensors to perform the detection and tracking work. These sensors have a $150^\circ$ field of view and their effective range extends from approximately 3 to 60 centimetres (see Figure \ref{fig:HMDistance}). Last but not least, the Leap Motion software combines sensor data with an internal model of the human hand to handle complex tracking conditions \cite{ULTP}.
 
 \begin{figure}[!htb]
-\includegraphics[width=0.6\textwidth]{figures/HMDistance.png}
+\includegraphics[width=0.4\textwidth]{figures/HMDistance.png}
 \centering
 \caption{In HMD mode, there should be less distance between the sensor and the hands than between the hands and any background objects or walls}
 \label{fig:HMDistance}
 \end{figure}
 
-\subsubsection{Challenges}
+\subsubsection{The Hand Tracking Panda}
+Because it is a useful, compact device that does not obstruct the face tracking component, we think the Leap Motion Controller is the ideal choice for this work. Therefore, in order to have the best performance in hand tracking, we chose to use the Leap Motion Controller in HMD mode because the Ultraleap Hand Tracking Plugin rotates the 3D hands to keep the correct orientation to the Unreal world when this mode is active \cite{ULTP}. In contrast with the Desktop Mounted Display (DMD) mode (see Figure \ref{fig:DMD}), we can see that hand orientation in DMD mode is not ideal for our work since we want to track gestures, which are primarily vertical and happen while individuals are communicating with one another. This concern could be resolved by rotating the data gathered by the leap motion controller before it is applied in the hands of the metahuman, however doing so would cause the prototype to perform slightly slower. We also decided to position the Leap Motion on the chest using a shirt clip made by a 3D printer, as shown in Figure \ref{fig:CMDvsHMD} (b) because using it on a VR support would obstruct the face tracking functionality (imagine having a VR headset as Figure \ref{fig:CMDvsHMD} (a)).
 
-\makebox[\textwidth]{\color{red} * TO-DO *}
+\begin{figure}[!htb]
+\includegraphics[width=0.6\textwidth]{figures/LeapView.jpg}
+\centering
+\caption{View of hands in DMD mode}
+\label{fig:DMD}
+\end{figure}
 
-\subsubsection{Limitations}
+\begin{table}[!htb]
+    \begin{minipage}{\linewidth}
+        \centering
+        \begin{subfigure}{0.49\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{figures/VRsupport.png}
+            \caption{Head (VR support)}
+        \end{subfigure}
+        \begin{subfigure}{0.49\textwidth}
+            \includegraphics[width=\linewidth]{figures/CMD.jpg}
+            \centering
+            \caption{Chest}
+        \end{subfigure}
+        \captionof{figure}{Head vs. Chest Mounted Mode}
+        \label{fig:CMDvsHMD}
+	\end{minipage}
+\end{table}
 
-\makebox[\textwidth]{\color{red} * TO-DO *}
+% \subsubsection{Challenges}
 
-\subsection{Methodology}
+% \makebox[\textwidth]{\color{red} * TO-DO *}
 
-\makebox[\textwidth]{\color{red} * TO-DO *}
+% \subsubsection{Limitations}
 
-\subsubsection{Participants}
+% \makebox[\textwidth]{\color{red} * TO-DO *}
 
-\makebox[\textwidth]{\color{red} * TO-DO *}
+% \subsection{Methodology}
 
-\subsubsection{Procedure}
+% \makebox[\textwidth]{\color{red} * TO-DO *}
 
-\makebox[\textwidth]{\color{red} * TO-DO *}
+% \subsubsection{Participants}
 
-\subsubsection{Hypotheses and Analyses}
+% \makebox[\textwidth]{\color{red} * TO-DO *}
 
-\makebox[\textwidth]{\color{red} * TO-DO *}
+% \subsubsection{Procedure}
 
-\subsubsection{Results}
+% \makebox[\textwidth]{\color{red} * TO-DO *}
 
-\makebox[\textwidth]{\color{red} * TO-DO *}
+% \subsubsection{Hypotheses and Analyses}
 
-\subsubsection{Discussion}
+% \makebox[\textwidth]{\color{red} * TO-DO *}
 
-\makebox[\textwidth]{\color{red} * TO-DO *}
+% \subsubsection{Results}
+
+% \makebox[\textwidth]{\color{red} * TO-DO *}
+
+% \subsubsection{Discussion}
+
+% \makebox[\textwidth]{\color{red} * TO-DO *}
