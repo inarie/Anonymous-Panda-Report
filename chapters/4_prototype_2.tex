@@ -103,9 +103,29 @@ We used the two Mapped Bone Anim Data arrays that were previously seen (Figure \
 \label{fig:mappedBoneList}
 \end{figure}
 
-Since we disabled the deformation mesh, only the rotations were tracked. To move the elbows to their proper positions, we apply an animation node called Forward And Backward Reaching Inverse Kinematics (FABRIK) to each elbow and another FABRIK to the head. Finally, we rotated all of our mapped data by $90^\circ$ in the "Offset Transform" for Y (Figure \ref{fig:mappedBoneList}), as is typical for skeletal meshes.
+Since we disabled the deformation mesh, only the rotations were tracked. To move the elbows to their proper positions, we apply an animation node called Forward And Backward Reaching Inverse Kinematics (FABRIK) to each elbow. The FABRIK animation node is an Inverse Kinematics (IK) solver that handles joint rotation from the location of an end-effector rather than directly from the joint rotation. In practice, we identify an effector location, and the IK solution solves the rotation so that the final joint is as close to that location as possible \cite{IK}.
 
-...
+Most animated skeletons in UE are powered by direct rotational data provided directly into the character's bones or the Skeletal Mesh. This is called Forward Kinematics (FK), or the direct application of rotation to joints or bones. Figure \ref{fig:diagramFK} illustrates a diagram of the concept.
+
+\begin{figure}[!htb]
+\includegraphics[width=0.8\textwidth]{figures/diagram_FK.png}
+\centering
+\caption{Forward Kinematics}
+\label{fig:diagramFK}
+\end{figure}
+
+Meanwhile, Inverse Kinematics operates in the opposite direction. Instead of rotating bones, we provide the bone chain a target (also known as an end effector), specifying a position that the chain's end should aim for. The effector is moved by the user, and the IK solver (the algorithm that drives rotation in an IK system) rotates the bones so that the final bone in the chain ends at the target location \cite{IK}. The red cross in Figure \ref{fig:diagramIK} represents the end effector.
+
+\begin{figure}[!htb]
+\includegraphics[width=0.8\textwidth]{figures/diagramIK.png}
+\centering
+\caption{Inverse Kinematics}
+\label{fig:diagramIK}
+\end{figure}
+
+Once again, in order to position the shoulders correctly, we had to rotate all of our mapped data by 90 degrees in the "Offset Transform" for Y, as is typical for skeletal meshes and as shown in Figure \ref{fig:mappedBoneList}.
+
+Concerning the prototype's outcome, Figure \ref{fig:BPHandsAndIK} depicts the steps taken from providing the IK with all of the data required for its operation to the metahuman's animation in the blueprint, after gathering data for the hands animation. Finally, Figure \ref{fig:handTrack} and videos \cite{APT1,APT2} illustrate the outcome applied to one of the metahumans used in this study.
 
 \begin{figure}[!htb]
 \includegraphics[width=\textwidth]{figures/BPHandsAndIK.png}
@@ -114,34 +134,33 @@ Since we disabled the deformation mesh, only the rotations were tracked. To move
 \label{fig:BPHandsAndIK}
 \end{figure}
 
+\begin{figure}[!htb]
+\includegraphics[width=0.5\textwidth]{figures/final.png}
+\centering
+\caption{The hand tracking's final outcome}
+\label{fig:handTrack}
+\end{figure}
+
 \paragraph{Challenges}
 
-% \makebox[\textwidth]{\color{red} * TO-DO *}
 
 \paragraph{Limitations}
 
-% \makebox[\textwidth]{\color{red} * TO-DO *}
 
 % \subsection{Methodology}
 
-% \makebox[\textwidth]{\color{red} * TO-DO *}
 
 % \subsubsection{Participants}
 
-% \makebox[\textwidth]{\color{red} * TO-DO *}
 
 % \subsubsection{Procedure}
 
-% \makebox[\textwidth]{\color{red} * TO-DO *}
 
-% \subsubsection{Hypotheses and Analyses}
+% \subsubsection{Hypotheses and Statistical Analyses}
 
-% \makebox[\textwidth]{\color{red} * TO-DO *}
 
 % \subsubsection{Results}
 
-% \makebox[\textwidth]{\color{red} * TO-DO *}
 
 % \subsubsection{Discussion}
 
-% \makebox[\textwidth]{\color{red} * TO-DO *}
