@@ -35,7 +35,7 @@ As mentioned, the Leap Motion Controller tracks hands and fingers with low laten
 \label{fig:unrealAxes}
 \end{figure}
 
-When the Leap Motion Controller has a good, high-contrast view of an object's silhouette, it uses infrared light and optical sensors to perform the detection and tracking work. These sensors have a $150^\circ$ field of view and their effective range extends from approximately 3 to 60 centimetres (see Figure \ref{fig:HMDistance}). Last but not least, the Leap Motion software combines sensor data with an internal model of the human hand to handle complex tracking conditions \cite{ULTP}.
+When the Leap Motion Controller has a good, high-contrast view of an object's silhouette, it uses infrared light and optical sensors to perform the detection and tracking work. These sensors have a $150^\circ$ field of view and their effective range extends from approximately 3 to 60 centimetres (Figure \ref{fig:HMDistance}). Last but not least, the Leap Motion software combines sensor data with an internal model of the human hand to handle complex tracking conditions \cite{ULTP}.
 
 \begin{figure}[!htb]
 \includegraphics[width=0.4\textwidth]{figures/HMDistance.png}
@@ -45,7 +45,7 @@ When the Leap Motion Controller has a good, high-contrast view of an object's si
 \end{figure}
 
 \subsubsection{The Hand Tracking Panda}
-Because it is a useful, compact device that does not obstruct the face tracking component, we think the Leap Motion Controller is the ideal choice for this work. Therefore, in order to have the best performance in hand tracking, we chose to use the Leap Motion Controller in HMD mode because the Ultraleap Hand Tracking Plugin rotates the 3D hands to keep the correct orientation to the Unreal world when this mode is active \cite{ULTP}. In contrast with the Desktop Mounted Display (DMD) mode (see Figure \ref{fig:DMD}), we can see that hand orientation in DMD mode is not ideal for our work since we want to track gestures, which are primarily vertical and happen while individuals are communicating with one another. This concern could be resolved by rotating the data gathered by the Leap Motion Controller before it is applied in the hands of the metahuman, however doing so would cause the prototype to perform slightly slower. We also decided to position the Leap Motion on the chest using a shirt clip made by a 3D printer, as shown in Figure \ref{fig:CMDvsHMD} (b) because using it on a VR support would obstruct the face tracking functionality (imagine having a VR headset as Figure \ref{fig:CMDvsHMD} (a) and wanting the metahuman to blink its right eye).
+Because it is a useful, compact device that does not obstruct the face tracking component, we think the Leap Motion Controller is the ideal choice for this work. Therefore, in order to have the best performance in hand tracking, we chose to use the Leap Motion Controller in HMD mode because the Ultraleap Hand Tracking Plugin rotates the 3D hands to keep the correct orientation to the Unreal world when this mode is active \cite{ULTP}. In contrast with the Desktop Mounted Display (DMD) mode (Figure \ref{fig:DMD}), we can see that hand orientation in DMD mode is not ideal for our work since we want to track gestures, which are primarily vertical and happen while individuals are communicating with one another. This concern could be resolved by rotating the data gathered by the Leap Motion Controller before it is applied in the hands of the metahuman, however doing so would cause the prototype to perform slightly slower. We also decided to position the Leap Motion on the chest using a shirt clip made by a 3D printer, as shown in Figure \ref{fig:CMDvsHMD} (b) because using it on a VR support would obstruct the face tracking functionality (imagine having a VR headset as Figure \ref{fig:CMDvsHMD} (a) and wanting the metahuman to blink its right eye).
 
 \begin{figure}[!htb]
 \includegraphics[width=0.6\textwidth]{figures/LeapView.jpg}
@@ -72,39 +72,53 @@ Because it is a useful, compact device that does not obstruct the face tracking 
 	\end{minipage}
 \end{table}
 
-% \paragraph{Integration of the Ultraleap Plugin}
-% The official Ultraleap Tracking Plugin for Unreal Engine 4 utilizes pre-made blueprints to add hand tracking to a scene and play it in the editor. However, depending on the project, it may take a more customized approach using C\texttt{+}\texttt{+} or blueprints \cite{ULTGIT}.
+The official Ultraleap Tracking Plugin for Unreal Engine 4 utilizes pre-made blueprints to add hand tracking to a scene and play it in the editor. However, depending on the project, it may take a more customized approach using C\texttt{+}\texttt{+} or blueprints \cite{ULTGIT}. For our project, we attempted to adapt a custom rigging example map from the Ultraleap Plugin, which contained several animation blueprints \cite{LEAPMOD}, to create the new version of the Anonymous Panda prototype, beginning by seeing how each rigging was done and how we could adapt it to our metahumans' bones.
 
-% To use the Ultraleap Plugin, which is intended to be a simple tool for integrating Ultraleap cameras into Unreal projects, the following prerequisites must be met:
-% \begin{enumerate}[leftmargin=3\parindent]
-%     \item Ultraleap Tracking Service 5.3.1 was installed;
-%     \item Ultraleap compatible device (Leap Motion);
-%     \item Unreal 4.27.1.
-% \end{enumerate}
+To use the rigging on our metahumans effectively, we had to re-parent the metahuman animation blueprint to "BodyStateAnimInstance". By utilizing the Body State system, we were able to map the tracked data collected by the Leap Motion Controller to the metahumans' skeletal mesh bones (Figure \ref{fig:mappedBones}).
 
-% Following that, we must ensure the following steps are performed in order for the Plugin to work properly in the project:
-% \begin{enumerate}[leftmargin=3\parindent]
-%     \item Download the version 4.2.0 of the Unreal Plugin (should be a .zip file);
-%     \item Create a Plugins folder in the project root folder;
-%     \item Drag the unzipped UltraleapTracking Plugin into the project's Plugins folder;
-%     \item Rename the Unreal Plugin folder to "UltraleapTracking";
-%     \item Enable the Plugin via Unreal Editor.
-% \end{enumerate}
+\begin{table}[!htb]
+    \begin{minipage}{\linewidth}
+        \centering
+        \begin{subfigure}{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/mappedBones.png}
+            \caption{Left Side}
+        \end{subfigure}
+        \begin{subfigure}{0.49\textwidth}
+            \includegraphics[width=\textwidth]{figures/mappedBonesR.png}
+            \centering
+            \caption{Right Side}
+        \end{subfigure}
+        \captionof{figure}{Tracked data mapped to the metahumans' skeletal hands mesh bones}
+        \label{fig:mappedBones}
+	\end{minipage}
+\end{table}
 
-% To test if the Plugin was correctly installed and enabled, there should be a folder named Examples inside the UltraleapTracking Content (check the view options to see if the "Show Plugin Content" option is enabled) with pre-made assets that can ensure that the plugin works (see Figure \ref{fig:plugin}).
+We used the two Mapped Bone Anim Data arrays that were previously seen (Figure \ref{fig:mappedBones}), much like the two-handed example from the custom rigging map, and chose to disable the deformation mesh because the metahuman model does not yet allow deformation (Figure \ref{fig:mappedBoneList}).
 
-% \begin{figure}[!htb]
-% \includegraphics[width=\textwidth]{figures/pluginWorking.jpg}
-% \centering
-% \caption{A simple example of the plugin in action}
-% \label{fig:plugin}
-% \end{figure}
+\begin{figure}[!htb]
+\includegraphics[width=0.8\textwidth]{figures/mappedBoneList.png}
+\centering
+\caption{Mapped Bone List}
+\label{fig:mappedBoneList}
+\end{figure}
 
-% \subsubsection{Challenges}
+Since we disabled the deformation mesh, only the rotations were tracked. To move the elbows to their proper positions, we apply an animation node called Forward And Backward Reaching Inverse Kinematics (FABRIK) to each elbow and another FABRIK to the head. Finally, we rotated all of our mapped data by $90^\circ$ in the "Offset Transform" for Y (Figure \ref{fig:mappedBoneList}), as is typical for skeletal meshes.
+
+...
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{figures/BPHandsAndIK.png}
+\centering
+\caption{Blueprint in control of animating metahuman hands using data collected by leap motion}
+\label{fig:BPHandsAndIK}
+\end{figure}
+
+\paragraph{Challenges}
 
 % \makebox[\textwidth]{\color{red} * TO-DO *}
 
-% \subsubsection{Limitations}
+\paragraph{Limitations}
 
 % \makebox[\textwidth]{\color{red} * TO-DO *}
 
