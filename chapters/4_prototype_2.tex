@@ -74,7 +74,7 @@ Because it is a useful, compact device that does not obstruct the face tracking 
 
 The official Ultraleap Tracking Plugin for Unreal Engine 4 utilizes pre-made blueprints to add hand tracking to a scene and play it in the editor. However, depending on the project, it may take a more customized approach using C\texttt{+}\texttt{+} or blueprints \cite{ULTGIT}. For our project, we attempted to adapt a custom rigging example map from the Ultraleap Plugin, which contained several animation blueprints \cite{LEAPMOD}, to create the new version of the Anonymous Panda prototype, beginning by seeing how each rigging was done and how we could adapt it to our metahumans' bones.
 
-To offset the metahumans' hands and raise them to waist height, we followed the advice of the individual who uploaded the YouTube video and added a positive constant on the Y-axis to the "Effector Transform Location" vector before the IK solver performed its magic. Although the output was closer to what was intended, the fingers stopped functioning normally (Figure \ref{fig:fingersIssue} and video \cite{APT3}).
+To use the rigging on our metahumans effectively, we had to re-parent the metahuman animation blueprint to "BodyStateAnimInstance". By utilizing the Body State system, we were able to map the tracked data collected by the Leap Motion Controller to the metahumans' skeletal mesh bones (Figure \ref{fig:mappedBones}).
 
 \begin{table}[!htb]
     \begin{minipage}{\linewidth}
@@ -182,7 +182,7 @@ We got in touch with the person from the video again, and he gave us additional 
 \label{fig:closeOutcome}
 \end{figure}
 
-To offset the metahumans' hands and raise them to waist height, we followed the advice of the individual who uploaded the YouTube video and added a positive constant on the Y-axis to the "Effector Transform Location" vector before the IK solver performed its magic. Although the output was closer to what was intended, the fingers stopped functioning normally (Figure \ref{fig:fingersIssue}).
+To offset the metahumans' hands and raise them to waist height, we followed the advice of the individual who uploaded the YouTube video and added a positive constant on the Y-axis to the "Effector Transform Location" vector before the IK solver performed its magic. Although the output was closer to what was intended, the fingers stopped functioning normally (Figure \ref{fig:fingersIssue} and video \cite{APT3}).
 
 \begin{figure}[!htb]
 \includegraphics[width=0.5\textwidth]{figures/otherIssue.png}
