@@ -130,7 +130,7 @@ Concerning the prototype's outcome, Figure \ref{fig:BPHandsAndIK} depicts the st
 \begin{figure}[!htb]
 \includegraphics[width=\textwidth]{figures/BPHandsAndIK.png}
 \centering
-\caption{Blueprint in control of animating metahuman hands using data collected by leap motion}
+\caption{Part of the blueprint in control of animating metahuman hands using data collected by leap motion}
 \label{fig:BPHandsAndIK}
 \end{figure}
 
@@ -142,25 +142,90 @@ Concerning the prototype's outcome, Figure \ref{fig:BPHandsAndIK} depicts the st
 \end{figure}
 
 \paragraph{Challenges}
+The exploration of the ultraleap plugin was one of the first challenges encountered during the development of this version of the prototype. Despite being documented, the examples provided were difficult to replicate due to the limited amount of online content that could help with this issue. We tried using github issues to ask for help since the solution was still far from being found but were unsuccessful. We eventually addressed the problem by downgrading the plugin version to version 4.2.0. 
 
+After we were able to successfully reproduce the plugin demonstrations, we made the decision to investigate hand tracking using the rigging method. Following the example of the custom rigging map, we adapted some of its content to our animation blueprints, but we were unable to achieve the same effect as the rigging example. Our initial attempt is shown in Figure \ref{fig:initialSteps} (a), which only shows the left arm, and Figure \ref{fig:initialSteps} (b), which shows both arms. The shoulders and hands in both figures have a significant deformation, but they were still capable of movement.
+
+\begin{table}[!htb]
+    \begin{minipage}{\linewidth}
+        \centering
+        \begin{subfigure}{0.49\textwidth}
+            \centering
+            \includegraphics[width=0.5\textwidth]{figures/issue.png}
+            \caption{Hand and Shoulder deformation}
+        \end{subfigure}
+        \begin{subfigure}{0.49\textwidth}
+            \includegraphics[width=0.68\textwidth]{figures/FirstInteraction.png}
+            \centering
+            \caption{Hands and Shoulders deformations}
+        \end{subfigure}
+        \captionof{figure}{Initial Hand Tracking Steps}
+        \label{fig:initialSteps}
+	\end{minipage}
+\end{table}
+
+The leap motion controller broke while we were trying to solve this issue, and we had to wait 3 weeks for a replacement. Since this device was absolutely necessary for the project, we used these three weeks to search for solutions online, in the plugin's documentation, and in github issues. In the end, we discovered a video on YouTube featuring a metahuman who could move his arms using the hand tracking data from leap motion \cite{TVL}. After contacting the person who uploaded the video, we were able to get them to provide some advice and tips about how hand tracking should be used properly in Unreal Engine. We made an effort to stick to the advice provided, but we were unable to achieve the desired outcome. The result, in which the arms were infinitely stretched, is shown in Figure \ref{fig:armsStretching}.
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{figures/handStretching.png}
+\centering
+\caption{Left arm stretching infinitely}
+\label{fig:armsStretching}
+\end{figure}
+
+We got in touch with the person from the video again, and he gave us additional advice on how to handle this. The result can be observed in Figure \ref{fig:closeOutcome} and we can notice that the outcame is getting closer to what we wanted (Figure \ref{fig:handTrack}). Still, in order to achieve a more realistic effect, we must elevate our metahumans' hands to waist level.
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{figures/handMinPosition.png}
+\centering
+\caption{One step closer to the final outcome}
+\label{fig:closeOutcome}
+\end{figure}
+
+To offset the metahumans' hands and raise them to waist height, we followed the advice of the individual who uploaded the YouTube video and added a positive constant on the Y-axis to the "Effector Transform Location" vector before the IK solver performed its magic. Although the output was closer to what was intended, the fingers stopped functioning normally (Figure \ref{fig:fingersIssue}).
+
+\begin{figure}[!htb]
+\includegraphics[width=0.5\textwidth]{figures/otherIssue.png}
+\centering
+\caption{Issues with the fingers as the outcome neared}
+\label{fig:fingersIssue}
+\end{figure}
+
+While trying to figure out how to get the fingers to work properly again, we received a new tip to not map the metacarpal bones of the fingers, which solved our problem. However, the arms started to stretch out indefinitely once more (Figure \ref{fig:armsStretching}). To solve this issue, we noticed that mapping the lower arm to none solved the problem, and thus we obtained our final result (Figure \ref{fig:handTrack}).
 
 \paragraph{Limitations}
+As was already noted, many studies think that hand gestures, along with facial expressions and spoken words, are important in expressing our emotions. In order to achieve our goal of deeper emotional recognition, including hand tracking to the existing prototype was a crucial step. Because hands are the most crucial nonverbal clues for identifying particular states in others, after facial expressions and body position \cite{WAX97, REI22}.
+
+There are a number of ways to accomplish hand tracking, such as with virtual reality equipment or gloves, but we felt that the Leap Motion Controller was the ideal choice for this work because it is a useful and compact device that does not interfere with the face recognition component. This device, however, has significant limitations. There is a reliance on the usage of the USB cable for leap motion and unreal communication, and because it is an old device, acquiring it may be difficult. Additionally, infrared sensors may not function properly in bright environments, and turning on the HMD mode requires the Ultraleap Visualizer program rather than the blueprint configuration because doing so interferes with the hand tracking data.
+
+Last but not least, a 3D-printed dependency of two shirt clips is shown in Figure \ref{fig:CMDvsHMD} (b). In the beginning, only one shirt clip was required, however throughout the prototype tests, instability and imprecise hand tracking capture were detected. Although the two clips are currently functional, a more stable and user-friendly solution would be preferable.
+
+\subsubsection{Anonymous Panda UI}
+There was some feedback on the prototype interface during the project presentation to some friends and family. Much of this feedback was connected to the lack of other metahumans, which were present but the opportunity to switch between them was not easily identified, and users were always forced to choose between the initial two metahumans since they were unaware of this option.
+In response to these critiques, we made an effort to develop a new user interface that was simpler to use and made all of the prototype's metahumans available at the time of user selection (Figure \ref{fig:newUI}). Since the prior study did not allow us to test the user interface with actual users, we were unable to identify this issue which could have been addressed earlier. We anticipate to get further feedback on this problem in the upcoming study by testing the UI with actual users and, if necessary, changing it.
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{figures/startMenu.png}
+\includegraphics[width=\textwidth]{figures/metahumanMenu.png}
+\centering
+\caption{New Anonymous Panda UI}
+\label{fig:newUI}
+\end{figure}
+
+\subsection{Methodology}
 
 
-% \subsection{Methodology}
+\subsubsection{Participants}
 
 
-% \subsubsection{Participants}
+\subsubsection{Procedure}
 
 
-% \subsubsection{Procedure}
+\subsubsection{Hypotheses and Statistical Analyses}
 
 
-% \subsubsection{Hypotheses and Statistical Analyses}
+\subsubsection{Results}
 
 
-% \subsubsection{Results}
-
-
-% \subsubsection{Discussion}
+\subsubsection{Discussion}
 
