@@ -18,7 +18,7 @@ While there are a variety of ways to perform hand tracking, such as with virtual
 The Leap Motion Controller (Figure \ref{fig:exampleLeap}) is a device that connects to a PC or a Mac and allows users to manipulate digital objects using hand motions. It adds a new way to interact with the digital world when combined with other hardware. Programs that interpret gesture-based computing allow users to play games, design, and learn in a hands-on manner. This device maps and tracks the human hand using an infrared scanner and sensor. This data is used to create a digital version of the hand that can manipulate digital objects in real time.
 
 \begin{figure}[!htb]
-\includegraphics[width=0.6\textwidth]{figures/leapMotion.jpg}
+\includegraphics[width=0.5\textwidth]{figures/leapMotion.jpg}
 \centering
 \caption{Example of the Leap Motion tracking \cite{LEAPROD}}
 \label{fig:exampleLeap}
@@ -29,13 +29,11 @@ In order to connect the existing Anonymous Panda prototype with the hand trackin
 As mentioned, the Leap Motion Controller tracks hands and fingers with low latency and high precision, reporting position, velocity, and orientation. This controller may be placed on a VR headset or used on a tabletop. To incorporate Ultraleap's hand tracking data into a project, the Leap motion Controller system, which runs as a service or daemon, analyzes the images produced by its hardware and sends the analyzed data to the project. Then, the unreal plugin connected to the mentioned service converts the received data to the Unreal coordinate system. Furthermore, the plugin automatically transforms the tracking data to use a left-handed coordinate system and scales distance values to centimeters because the UE uses a left-handed convention for its coordinate system and centimeters as the default unit, whereas the Leap Motion uses a right-handed convention and millimeters as the default unit \cite{ULTP}. Figure \ref{fig:unrealAxes} shows the Unreal coordinate system in relationship to the Leap Motion device in Head Mounted Display (HMD) mode.
 
 \begin{figure}[!htb]
-\includegraphics[width=0.3\textwidth]{figures/unrealAxes.png}
+\includegraphics[width=0.4\textwidth]{figures/unrealAxes.png}
 \centering
 \caption{The Unreal coordinate system in relationship to the Leap Motion device in HMD mode \cite{ULTP}}
 \label{fig:unrealAxes}
 \end{figure}
-
-When the Leap Motion Controller has a good, high-contrast view of an object's silhouette, it uses infrared light and optical sensors to perform the detection and tracking work. These sensors have a $150^\circ$ field of view and their effective range extends from approximately 3 to 60 centimetres (Figure \ref{fig:HMDistance}). Last but not least, the Leap Motion software combines sensor data with an internal model of the human hand to handle complex tracking conditions \cite{ULTP}.
 
 \begin{figure}[!htb]
 \includegraphics[width=0.4\textwidth]{figures/HMDistance.png}
@@ -44,25 +42,29 @@ When the Leap Motion Controller has a good, high-contrast view of an object's si
 \label{fig:HMDistance}
 \end{figure}
 
+When the Leap Motion Controller has a good, high-contrast view of an object's silhouette, it uses infrared light and optical sensors to perform the detection and tracking work. These sensors have a $150^\circ$ field of view and their effective range extends from approximately 3 to 60 centimetres (Figure \ref{fig:HMDistance}). Last but not least, the Leap Motion software combines sensor data with an internal model of the human hand to handle complex tracking conditions \cite{ULTP}.
+
 \subsubsection{The Hand Tracking Panda}
 Because it is a useful, compact device that does not obstruct the face tracking component, we think the Leap Motion Controller is the ideal choice for this work. Therefore, in order to have the best performance in hand tracking, we chose to use the Leap Motion Controller in HMD mode because the Ultraleap Hand Tracking Plugin rotates the 3D hands to keep the correct orientation to the Unreal world when this mode is active \cite{ULTP}. In contrast with the Desktop Mounted Display (DMD) mode (Figure \ref{fig:DMD}), we can see that hand orientation in DMD mode is not ideal for our work since we want to track gestures, which are primarily vertical and happen while individuals are communicating with one another. This concern could be resolved by rotating the data gathered by the Leap Motion Controller before it is applied in the hands of the metahuman, however doing so would cause the prototype to perform slightly slower. We also decided to position the Leap Motion on the chest using a shirt clip made by a 3D printer, as shown in Figure \ref{fig:CMDvsHMD} (b) because using it on a VR support would obstruct the face tracking functionality (imagine having a VR headset as Figure \ref{fig:CMDvsHMD} (a) and wanting the metahuman to blink its right eye).
-
-\begin{figure}[!htb]
-\includegraphics[width=0.6\textwidth]{figures/LeapView.jpg}
-\centering
-\caption{View of hands in DMD mode \cite{ULTP}}
-\label{fig:DMD}
-\end{figure}
 
 \begin{table}[!htb]
     \begin{minipage}{\linewidth}
         \centering
-        \begin{subfigure}{0.49\textwidth}
+        \begin{subfigure}{0.6\textwidth}
+            \includegraphics[width=\linewidth]{figures/LeapView.jpg}
+            \centering
+        \end{subfigure}
+        \captionof{figure}{View of hands in DMD mode \cite{ULTP}}
+        \label{fig:DMD}
+    \end{minipage}
+    \begin{minipage}{\linewidth}
+        \centering
+        \begin{subfigure}{0.4\textwidth}
             \centering
             \includegraphics[width=\linewidth]{figures/VRsupport.png}
             \caption{Head (VR support) \cite{LEAPVR}}
         \end{subfigure}
-        \begin{subfigure}{0.49\textwidth}
+        \begin{subfigure}{0.4\textwidth}
             \includegraphics[width=\linewidth]{figures/CMD.jpg}
             \centering
             \caption{Chest}
@@ -105,23 +107,27 @@ We used the two Mapped Bone Anim Data arrays that were previously seen (Figure \
 
 Since we disabled the deformation mesh, only the rotations were tracked. To move the elbows to their proper positions, we apply an animation node called Forward And Backward Reaching Inverse Kinematics (FABRIK) to each elbow. The FABRIK animation node is an Inverse Kinematics (IK) solver that handles joint rotation from the location of an end-effector rather than directly from the joint rotation. In practice, we identify an effector location, and the IK solution solves the rotation so that the final joint is as close to that location as possible \cite{IK}.
 
-Most animated skeletons in UE are powered by direct rotational data provided directly into the character's bones or the Skeletal Mesh. This is called Forward Kinematics (FK), or the direct application of rotation to joints or bones. Figure \ref{fig:diagramFK} illustrates a diagram of the concept.
+Most animated skeletons in UE are powered by direct rotational data provided directly into the character's bones or the Skeletal Mesh. This is called Forward Kinematics (FK), or the direct application of rotation to joints or bones. Figure \ref{fig:kinematics} (a) illustrates a diagram of the concept.
 
-\begin{figure}[!htb]
-\includegraphics[width=0.8\textwidth]{figures/diagram_FK.png}
-\centering
-\caption{Forward Kinematics \cite{IK}}
-\label{fig:diagramFK}
-\end{figure}
+Meanwhile, Inverse Kinematics operates in the opposite direction. Instead of rotating bones, we provide the bone chain a target (also known as an end effector), specifying a position that the chain's end should aim for. The effector is moved by the user, and the IK solver (the algorithm that drives rotation in an IK system) rotates the bones so that the final bone in the chain ends at the target location \cite{IK}. The red cross in Figure \ref{fig:kinematics} (b) represents the end effector.
 
-Meanwhile, Inverse Kinematics operates in the opposite direction. Instead of rotating bones, we provide the bone chain a target (also known as an end effector), specifying a position that the chain's end should aim for. The effector is moved by the user, and the IK solver (the algorithm that drives rotation in an IK system) rotates the bones so that the final bone in the chain ends at the target location \cite{IK}. The red cross in Figure \ref{fig:diagramIK} represents the end effector.
-
-\begin{figure}[!htb]
-\includegraphics[width=0.8\textwidth]{figures/diagramIK.png}
-\centering
-\caption{Inverse Kinematics \cite{IK}}
-\label{fig:diagramIK}
-\end{figure}
+\begin{table}[!htb]
+    \begin{minipage}{\linewidth}
+        \centering
+        \begin{subfigure}{0.49\textwidth}
+            \centering
+            \includegraphics[width=0.8\textwidth]{figures/diagram_FK.png}
+            \caption{Forward Kinematics \cite{IK}}
+        \end{subfigure}
+        \begin{subfigure}{0.49\textwidth}
+            \includegraphics[width=0.8\textwidth]{figures/diagramIK.png}
+            \centering
+            \caption{Inverse Kinematics \cite{IK}}
+        \end{subfigure}
+        \captionof{figure}{Diferences between FK and IK}
+        \label{fig:kinematics}
+	\end{minipage}
+\end{table}
 
 Once again, in order to position the shoulders correctly, we had to rotate all of our mapped data by 90 degrees in the "Offset Transform" for Y, as is typical for skeletal meshes and as shown in Figure \ref{fig:mappedBoneList}.
 
@@ -155,7 +161,7 @@ After we were able to successfully reproduce the plugin demonstrations, we made 
             \caption{Hand and Shoulder deformation}
         \end{subfigure}
         \begin{subfigure}{0.49\textwidth}
-            \includegraphics[width=0.68\textwidth]{figures/FirstInteraction.png}
+            \includegraphics[width=0.67\textwidth]{figures/FirstInteraction.png}
             \centering
             \caption{Hands and Shoulders deformations}
         \end{subfigure}
@@ -212,7 +218,18 @@ In response to these critiques, we made an effort to develop a new user interfac
 \label{fig:newUI}
 \end{figure}
 
-\subsection{Research Model and Hypotheses}
+\subsection{Methodology}
+
+
+\subsubsection{Participants}
+Participants were required to be at least 18 years old and needed to be ... They were recruited via email and social media groups, and they were given a general overview of the study's topic. Our final sample consists of ... (), aged between 18 and ... ().
+
+Those who agreed to take part () were given an informed consent form first. For this experiment, an independent samples design was used, and participants were asked to fill out basic demographic questions as well as a self-assessment questionnaire to determine their baseline levels of public disclosure. They were then taken to a room to test our prototype for at least 5 minutes before being asked some follow-up questions.
+
+\subsubsection{Procedure}
+
+
+\subsubsection{Hypotheses and Statistical Analyses}
 Our goal in this research is to put to the test an extended Technology Acceptance Model (TAM) designed for studying the user acceptance of our work, the Anonymous Panda.
 
 The TAM predicts user intention to utilize a given technology based on two user perceptions: perceived utility and perceived ease of use. Perceived usefulness is defined as "the degree to which a person believes that using a certain system would improve his or her job performance" \cite{DAV89}. Perceived ease of use is defined as "the degree to which a person believes that using a certain system would be devoid of effort" \cite{DAV89}.
@@ -227,26 +244,9 @@ Several studies that have used the TAM to examine a person's intention to use ce
 
 \textbf{\textit{H}\textsubscript{3}} - Perceived Anonymity has a positive effect on Online Public Disclosure.
 
-Our research model is summarized in Figure \ref{fig:TAModel}, which also shows the hypothesized relationships between the variables.
+\textbf{\textit{H}\textsubscript{4}} - PA has a positive effect on perceived usefulness.
 
-\begin{figure}[!htb]
-\includegraphics[width=0.8\textwidth]{figures/TAM.png}
-\centering
-\caption{Our research model}
-\label{fig:TAModel}
-\end{figure}
-
-\subsection{Methodology}
-
-
-\subsubsection{Participants}
-
-
-\subsubsection{Procedure}
-
-
-\subsubsection{Statistical Analyses}
-
+\textbf{\textit{H}\textsubscript{5}} - OPD has a positive effect on perceived usefulness.
 
 \subsubsection{Results}
 
