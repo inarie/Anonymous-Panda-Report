@@ -1,5 +1,5 @@
 \section{The Anonymous Face and Hand Tracking Panda}
-When reviewing and testing the Anonymous Face Tracking Panda prototype, we found that the virtual avatar's ability to express themselves was limited by the lack of hand movement, which made it seem unrealistic and similar to a puppet acting. Through this finding, we questioned if the addition of hand tracking would affect or not the ability to elicit the same emotional response as human-to-human interactions (\textbf{RQ\textsubscript{1}}), and if it would help increase interactants' verbal self-disclosure or not (\textbf{RQ\textsubscript{2}}).
+When reviewing and testing the Anonymous Face Tracking Panda prototype, we found that the virtual avatar's ability to express themselves was limited by the lack of hand movement, which made it seem unrealistic and similar to a puppet acting. Through this finding, we questioned if the addition of hand tracking would help increase interactants' verbal self-disclosure or not (\textbf{RQ\textsubscript{2}}).
 
 When people speak, they typically make spontaneous hand motions that occur in synchronization with speech and naturally accompany all spoken communication; such movements are known as gestures \cite{CLO20}. Gestures serve a diverse range of purposes in communication, learning, and comprehension for those who see them as well as those who make them. Gestures are particularly successful when they resemble the thought they represent, giving them an advantage over words since they offer relevant and distinct information while reflecting the speaker's underlying knowledge and experiences \cite{CLO20, KAN16B}. According to Feyereisen and de Lannoy \cite{FEY91}, people of all known cultures and languages make gestures. Hence gestures are essential for making connections with others, although styles vary across countries.
 
@@ -47,7 +47,7 @@ When the Leap Motion Controller has an excellent, high-contrast view of an objec
 \subsubsection{The Hand Tracking Panda}
 Because it is a useful, compact device that does not obstruct the face tracking component, we think the Leap Motion Controller is the ideal choice for this work. Therefore, in order to have the best performance in hand tracking, we chose to use the Leap Motion Controller in HMD mode because the Ultraleap Hand Tracking Plugin rotates the 3D hands to keep the correct orientation to the Unreal world when this mode is active \cite{ULTP}. In contrast with the Desktop Mounted Display (DMD) mode (Figure \ref{fig:DMD}), we can see that hand orientation in DMD mode is not ideal for our work since we want to track gestures, which are primarily vertical and happen while individuals are communicating with one another. This concern could be resolved by rotating the data gathered by the Leap Motion Controller before it is applied in the hands of the metahuman, however doing so would cause the prototype to perform slightly slower. We also decided to position the Leap Motion on the chest using a shirt clip made by a 3D printer, as shown in Figure \ref{fig:CMDvsHMD} (b) because using it on a VR support would obstruct the face tracking functionality (imagine having a VR headset as Figure \ref{fig:CMDvsHMD} (a) and wanting the metahuman to blink its right eye).
 
-\begin{table}[!htb]
+\begin{figure}[!htb]
     \begin{minipage}{\linewidth}
         \centering
         \begin{subfigure}{0.6\textwidth}
@@ -72,13 +72,13 @@ Because it is a useful, compact device that does not obstruct the face tracking 
         \captionof{figure}{Head vs. Chest Mounted Mode}
         \label{fig:CMDvsHMD}
 	\end{minipage}
-\end{table}
+\end{figure}
 
 The official Ultraleap Tracking Plugin for Unreal Engine 4 utilizes pre-made blueprints to add hand tracking to a scene and play it in the editor. However, depending on the project, it may take a more customized approach using C\texttt{+}\texttt{+} or blueprints \cite{ULTGIT}. For our project, we attempted to adapt a custom rigging example map from the Ultraleap Plugin, which contained several animation blueprints \cite{LEAPMOD}, to create the new version of the Anonymous Panda prototype, beginning by seeing how each rigging was done and how we could adapt it to our metahumans' bones.
 
 To use the rigging on our metahumans effectively, we had to re-parent the metahuman animation blueprint to "BodyStateAnimInstance". By utilizing the Body State system, we were able to map the tracked data collected by the Leap Motion Controller to the metahumans' skeletal mesh bones (Figure \ref{fig:mappedBones}).
 
-\begin{table}[!htb]
+\begin{figure}[!htb]
     \begin{minipage}{\linewidth}
         \centering
         \begin{subfigure}{0.49\textwidth}
@@ -91,10 +91,10 @@ To use the rigging on our metahumans effectively, we had to re-parent the metahu
             \centering
             \caption{Right Side}
         \end{subfigure}
-        \captionof{figure}{Tracked data mapped to the metahumans' skeletal hands mesh bones}
+        \caption{Tracked data mapped to the metahumans' skeletal hands mesh bones}
         \label{fig:mappedBones}
 	\end{minipage}
-\end{table}
+\end{figure}
 
 We used the two Mapped Bone Anim Data arrays that were previously seen (Figure \ref{fig:mappedBones}), much like the two-handed example from the custom rigging map, and chose to disable the deformation mesh because the metahuman model does not yet allow deformation (Figure \ref{fig:mappedBoneList}).
 
@@ -111,7 +111,7 @@ The majority of animated skeletons in UE are powered by direct rotational data f
 
 Inverse Kinematics, on the other hand, works in the opposite way. Instead of rotating bones, we give the bone chain a target (also known as an end effector) that specifies where the chain's end should aim. The user moves the effector, and the IK solver (the algorithm that drives rotation in an IK system) rotates the bones until the last bone in the chain reaches the target location \cite{IK}. The end effector is shown by the red cross in Figure \ref{fig:kinematics} (b).
 
-\begin{table}[!htb]
+\begin{figure}[!htb]
     \begin{minipage}{\linewidth}
         \centering
         \begin{subfigure}{0.49\textwidth}
@@ -124,10 +124,10 @@ Inverse Kinematics, on the other hand, works in the opposite way. Instead of rot
             \centering
             \caption{Inverse Kinematics \cite{IK}}
         \end{subfigure}
-        \captionof{figure}{Diferences between FK and IK}
+        \caption{Diferences between FK and IK}
         \label{fig:kinematics}
 	\end{minipage}
-\end{table}
+\end{figure}
 
 Once again, in order to position the shoulders correctly, we had to rotate all of our mapped data by 90 degrees in the "Offset Transform" for Y, as is typical for skeletal meshes and as shown in Figure \ref{fig:mappedBoneList}.
 
@@ -152,7 +152,7 @@ The exploration of the ultraleap plugin was one of the first challenges encounte
 
 After we were able to successfully reproduce the plugin demonstrations, we made the decision to investigate hand tracking using the rigging method. Following the example of the custom rigging map, we adapted some of its content to our animation blueprints, but we were unable to achieve the same effect as the rigging example. Our initial attempt is shown in Figure \ref{fig:initialSteps} (a), which only shows the left arm, and Figure \ref{fig:initialSteps} (b), which shows both arms. The shoulders and hands in both figures have a significant deformation, but they were still capable of movement.
 
-\begin{table}[!htb]
+\begin{figure}[!htb]
     \begin{minipage}{\linewidth}
         \centering
         \begin{subfigure}{0.49\textwidth}
@@ -165,10 +165,10 @@ After we were able to successfully reproduce the plugin demonstrations, we made 
             \centering
             \caption{Hands and Shoulders deformations}
         \end{subfigure}
-        \captionof{figure}{Initial Hand Tracking Steps}
+        \caption{Initial Hand Tracking Steps}
         \label{fig:initialSteps}
 	\end{minipage}
-\end{table}
+\end{figure}
 
 The leap motion controller broke while we were trying to solve this issue, and we had to wait 3 weeks for a replacement. Since this device was absolutely necessary for the project, we used these three weeks to search for solutions online, in the plugin's documentation, and in github issues. In the end, we discovered a video on YouTube featuring a metahuman who could move his arms using the hand tracking data from leap motion \cite{TVL}. After contacting the person who uploaded the video, we were able to get them to provide some advice and tips about how hand tracking should be used properly in Unreal Engine. We made an effort to stick to the advice provided, but we were unable to achieve the desired outcome. The result, in which the arms were infinitely stretched, is shown in Figure \ref{fig:armsStretching}.
 
@@ -219,7 +219,7 @@ In response to these critiques, we made an effort to develop a new user interfac
 \end{figure}
 
 \subsection{Methodology}
-The purpose of this study is to put to the test an extended Technology Acceptance Model (TAM) created to study user acceptance of our work, the Anonymous Panda. Furthermore, we want to see if virtual avatars can help promote interactants' verbal self-disclosure or not (\textbf{RQ\textsubscript{2}}).
+The purpose of this study is to put to the test an extended Technology Acceptance Model (TAM) created to study users' acceptance of our work, the Anonymous Panda. Furthermore, we want to see if virtual avatars can help promote interactants' verbal self-disclosure or not (\textbf{RQ\textsubscript{2}}).
 
 Based on two user perceptions: perceived utility and perceived ease of use, the TAM estimates user intention to utilize a particular technology. Perceived usefulness is defined as "the amount to which a person believes that using a certain system will improve his or her job performance" \cite{DAV89}. In contrast, perceived ease of use is defined as "the degree to which a person believes that using a certain technology would be devoid of effort" \cite{DAV89}.
 
@@ -270,34 +270,61 @@ The following five items were used to assess the participants' PU: "Using Anonym
 Finally, in an open-ended question, participants could express their thoughts on our prototype, as well as what they disliked or thought could be improved. They could also share with us if they used a similar application to ours.
 
 \subsubsection{Hypotheses and Statistical Analyses}
-As previously stated, the goal of this study is to put to the test an extended TAM designed to study the user acceptance of the Anonymous Panda. In addition, determine whether virtual avatars can promote interactants' verbal self-disclosure or not (\textbf{RQ\textsubscript{2}}). Therefore, we propose the seven following hypotheses:
+As previously stated, the goal of this study is to put to the test an extended TAM designed to study the users' acceptance of the Anonymous Panda. In addition, determine whether virtual avatars can promote interactants' verbal self-disclosure or not (\textbf{RQ\textsubscript{2}}). Therefore, we propose the three following hypotheses:
 
-\textbf{\textit{H}\textsubscript{1}} - PA has a positive effect on users' acceptance of Anonymous Panda.
+\textbf{\textit{H}\textsubscript{1}} - PA has a positive effect on OPD.
 
-\textbf{\textit{H}\textsubscript{2}} - OPD has a positive effect on users' acceptance of Anonymous Panda.
+\textbf{\textit{H}\textsubscript{2}} - PA has a positive effect on PU.
 
-\textbf{\textit{H}\textsubscript{3}} - PU has a positive effect on users' acceptance of Anonymous Panda.
+\textbf{\textit{H}\textsubscript{3}} - PU has a positive effect on OPD.
 
-\textbf{\textit{H}\textsubscript{4}} - PEU has a positive effect on users' acceptance of Anonymous Panda.
+To test \textbf{\textit{H}\textsubscript{1}}-\textbf{\textit{H}\textsubscript{3}}, we attempted to determine whether the PA, OPD, PU, and PEU were correlated in any way. This required the use of the Spearman's Rank Correlation to determine whether or not there was a statistically significant correlation between these four variables.
 
-\textbf{\textit{H}\textsubscript{5}} - PA has a positive effect on OPD.
-
-\textbf{\textit{H}\textsubscript{6}} - PA has a positive effect on PU.
-
-\textbf{\textit{H}\textsubscript{7}} - OPD has a positive effect on PU.
-
-To test \textbf{\textit{H}\textsubscript{1}}-\textbf{\textit{H}\textsubscript{7}}, ...
-
-We also wanted to see if the participants' willingness to provide personal information online altered considerably before and after using the Anonymous Panda application. Due to the fact that participants were measured more than once for the dependent variable, a repeated measures analysis method was required. Therefore, we conducted a Wilcoxon signed-rank test to see whether the participants' willingness to disclose personal information online had changed compared to before they used the Anonymous Panda application. Finally, using a statistical significance level of 0.05, all of this data was evaluated in the IBM SPSS statistics software (v.28, 2021).
+We also wanted to see if the participants' willingness to provide personal information online altered considerably before and after using the Anonymous Panda application. Due to the fact that participants were measured more than once for the dependent variable, a repeated measures analysis method was required. Therefore, we conducted a Wilcoxon signed-rank test to see whether the participants' willingness to disclose personal information online had changed compared to before they used the Anonymous Panda application. Cronbach's Alpha was also used to ensure the reliability of our questionnaire. Finally, using a statistical significance level of 0.05, all of this data was evaluated in the IBM SPSS statistics software (v.28, 2021).
 
 \subsubsection{Results}
+Tables \ref{tab:PA}, \ref{tab:OPD}, \ref{tab:PU}, and \ref{tab:PEU} describes the different items that have been asked regarding the users' acceptance of our application. The PA part consisted of 5 items ($\alpha$=.65), the OPD part consisted of 5 items ($\alpha$=.84), the PU part consisted of 5 items ($\alpha$=.89), and the PEU part consisted of 5 items ($\alpha$=.80).
 
-\begin{figure}[!htb]
+\begin{table}[!htb]
+\includegraphics[width=\textwidth]{figures/PA.png}
+\includegraphics[width=0.35\textwidth]{figures/PAlpha.png}
+\centering
+\caption{Perceived Anonymity items results}
+\label{tab:PA}
+\end{table}
+
+\begin{table}[!htb]
+\includegraphics[width=\textwidth]{figures/OPD.png}
+\includegraphics[width=0.35\textwidth]{figures/OPDalpha.png}
+\centering
+\caption{Online Public Disclosure items results}
+\label{tab:OPD}
+\end{table}
+
+\begin{table}[!htb]
+\includegraphics[width=\textwidth]{figures/PU.png}
+\includegraphics[width=0.35\textwidth]{figures/PUalpha.png}
+\centering
+\caption{Perceived Usefulness items results}
+\label{tab:PU}
+\end{table}
+
+\begin{table}[!htb]
+\includegraphics[width=\textwidth]{figures/PEU.png}
+\includegraphics[width=0.35\textwidth]{figures/PEUalpha.png}
+\centering
+\caption{Perceived Ease of Use items results}
+\label{tab:PEU}
+\end{table}
+
+To evaluate correlation between the PA, OPD, PU, and PEU, we conducted a Spearman's Rank Correlation test. The test revealed no significant relationship between the participants' Perceived Anonymity and Online Public Disclosure (\textit{r}\textsubscript{s}=.29, \textit{p}=.22, \textit{N}=20). However, the test revealed several significant correlations between the participants' Perceived Anonymity and Perceived Usefulness (\textit{r}\textsubscript{s}=.46, \textit{p}=.04, \textit{N}=20), Perceived Anonymity and Perceived Ease of Use (\textit{r}\textsubscript{s}=.52, \textit{p}=.02, \textit{N}=20), Perceived Usefulness and Online Public Disclosure (\textit{r}\textsubscript{s}=.57, \textit{p}=.01, \textit{N}=20), Perceived Usefulness and Perceived Ease of Use (\textit{r}\textsubscript{s}=.64, \textit{p}=.00, \textit{N}=20), and finally, Perceived Ease of Use and Online Public Disclosure (\textit{r}\textsubscript{s}=.46, \textit{p}=.04, \textit{N}=20). Table \ref{tab:altcorrelations} shows the significant correlations between the variables (Appendix \ref{appendix:correlations} shows the correlations between each question), whereas Figure \ref{fig:scatterbox} shows the various correlations obtained from the Spearman's Rank Correlation test.
+
+\begin{table}[!htb]
 \includegraphics[width=0.8\textwidth]{figures/altCorrelations.png}
 \centering
-\captionof{table}{Correlations between our variables}
-\label{fig:altcorrelations}
-\end{figure}
+\caption{Correlations between our variables}
+\label{tab:altcorrelations}
+\end{table}
 
 \begin{figure}[!htb]
 \includegraphics[width=\textwidth]{figures/scatterbox.png}
@@ -306,9 +333,17 @@ We also wanted to see if the participants' willingness to provide personal infor
 \label{fig:scatterbox}
 \end{figure}
 
-To assess the difference in the participants' willingness to provide personal information online after using the Anonymous Panda app, a Wilcoxon signed-rank test was performed. The results demonstrated a statistically significant improvement in the users' willingness to disclose personal information online following the use of the application (\textit{Z}=-2.543, \textit{p}=.011), with a large effect size (\textit{r}=.57).
+These findings suggest that there are no statistically significant correlation that could support our \textbf{\textit{H}\textsubscript{1}}, implying that participants' perceived anonymity had little or no effect on the users' willingness to disclose personal information online. However, these results support our \textbf{\textit{H}\textsubscript{2}} and \textbf{\textit{H}\textsubscript{3}}, which state that participants' perceived anonymity effects their perceived usefulness and that participants' perceived usefulness increases users' willingness to disclose personal information online.
+
+Finally, to assess the difference in the participants' willingness to provide personal information online after using the Anonymous Panda app, a Wilcoxon signed-rank test was performed. The results demonstrated a statistically significant improvement in the users' willingness to disclose personal information online following the use of the application (\textit{Z}=-2.543, \textit{p}=.011), with a large effect size (\textit{r}=.57).
  
 \subsubsection{Discussion}
-% repeated measures to test if there is a statistically significant difference of online public disclosure (OPD) before and after using the anonymous panda app -- Using Wilcoxon signed-rank test
+In this study, we examined an expanded Technology Acceptance Model developed to analyze the acceptance of our work among several users. Additionally, we hoped to see whether or not virtual avatars could improve users' verbal self-disclosure (\textbf{RQ\textsubscript{2}}).
 
-% The results showed a statistically significant positive change in participants' willingness to disclose personal information online after using the anonymous panda app, z=-2.543, p=.011, with a large effect size (r=0.57).
+Regarding our \textbf{\textit{H\textsubscript{1}}}, we did not a find significant relationship between the users' perceived anonymity and online public disclosure. That is, the fact that others are unaware of the participant's identity has little or no effect on their desire to disclose personal information online. However, after utilizing the Anonymous Panda, participants' willingness to share personal information online improved, but it appears that it did not relieve their concern of their identity being revealed. This could be due to external factors or factors not included in our questionnaire, but it could also be due to the use of a self-reported questionnaire, as there is a possibility that individuals provided inaccurate answers \cite{DEM15}.
+
+Concerning our \textbf{\textit{H\textsubscript{2}}}, we discovered a significant connection between users' perceived anonymity and perceived usefulness. In other words, the participants' perception of the Anonymous Panda application seems to improve due to the fact that others are unaware of their identities. That is, if the users' PA effects their PU, as indicated by our findings, and PU promotes the users' intention to use a given app, as demonstrated by \cite{DAV89}, we may assume that PA also influences the users' desire to use our app. Furthermore, we also we discovered a favorable correlation between the user's perceived usefulness and perceived ease of use, which is in agreement with the current literature on the TAM model \cite{DAV89}.
+
+Similarly, we found a significant correlation between users' perceived usefulness and online public disclosure (\textbf{\textit{H\textsubscript{3}}}). This suggests that users are more likely to increase their ability to provide personal information online if they find the Anonymous Panda application useful. Other research \cite{ZHO18, SHA21} also has shown that perceived usefulness influences people's disclosure of personal information.
+
+Finally, we evaluate the difference of online public disclosure before and after using the anonymous panda app in order to validate our \textbf{RQ\textsubscript{2}} that virtual avatars could improve users' verbal self-disclosure. Our findings showed a statistically significant positive change in participants' willingness to disclose personal information online after using the anonymous panda app. However, these results could be easily distorted since we used a self-reported questionnaire, therefore there's a chance that individuals gave invalid answers \cite{DEM15}, and because our \textbf{\textit{H\textsubscript{1}}} was rejected, these results may not be related to the virtual avatars themselves.
