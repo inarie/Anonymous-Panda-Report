@@ -148,9 +148,9 @@ Concerning the prototype's outcome, Figure \ref{fig:BPHandsAndIK} depicts the st
 \end{figure}
 
 \paragraph{Challenges}
-The exploration of the ultraleap plugin was one of the first challenges encountered during the development of this version of the prototype. Despite being documented, the examples provided were difficult to replicate due to the limited amount of online content that could help with this issue. We tried using github issues to ask for help since the solution was still far from being found but were unsuccessful. We eventually addressed the problem by downgrading the plugin version to version 4.2.0. 
+The exploration of the Ultraleap Plugin was one of the first challenges encountered during the development of this version of the prototype. Despite being documented, the examples provided were difficult to replicate due to the limited amount of online content that could help with this issue. The problem was addressed by downgrading the plugin version to version 4.2.0. 
 
-After we were able to successfully reproduce the plugin demonstrations, we made the decision to investigate hand tracking using the rigging method. Following the example of the custom rigging map, we adapted some of its content to our animation blueprints, but we were unable to achieve the same effect as the rigging example. Our initial attempt is shown in Figure \ref{fig:initialSteps} (a), which only shows the left arm, and Figure \ref{fig:initialSteps} (b), which shows both arms. The shoulders and hands in both figures have a significant deformation, but they were still capable of movement.
+After successfully recreating the plugin demonstrations, we decided to adapt the hand tracking via rigging into our animation blueprints Unfortunately, we were unable to replicate the rigging example. Our initial attempt is shown in Figure \ref{fig:initialSteps} (a), which only shows the left arm, and Figure \ref{fig:initialSteps} (b), which shows both arms. The shoulders and hands in both figures have a significant deformation, but they were still capable of movement.
 
 \begin{figure}[!htb]
     \begin{minipage}{\linewidth}
@@ -170,7 +170,7 @@ After we were able to successfully reproduce the plugin demonstrations, we made 
 	\end{minipage}
 \end{figure}
 
-The leap motion controller broke while we were trying to solve this issue, and we had to wait 3 weeks for a replacement. Since this device was absolutely necessary for the project, we used these three weeks to search for solutions online, in the plugin's documentation, and in github issues. In the end, we discovered a video on YouTube featuring a metahuman who could move his arms using the hand tracking data from leap motion \cite{TVL}. After contacting the person who uploaded the video, we were able to get them to provide some advice and tips about how hand tracking should be used properly in Unreal Engine. We made an effort to stick to the advice provided, but we were unable to achieve the desired outcome. The result, in which the arms were infinitely stretched, is shown in Figure \ref{fig:armsStretching}.
+% The leap motion controller broke while we were trying to solve this issue, and we had to wait 3 weeks for a replacement. Since this device was absolutely necessary for the project, we used these three weeks to search for solutions online, in the plugin's documentation, and in github issues. In the end, we discovered a video on YouTube featuring a metahuman who could move his arms using the hand tracking data from leap motion \cite{TVL}. After contacting the person who uploaded the video, we were able to get them to provide some advice and tips about how hand tracking should be used properly in Unreal Engine. We made an effort to stick to the advice provided, but we were unable to achieve the desired outcome. The result, in which the arms were infinitely stretched, is shown in Figure \ref{fig:armsStretching}.
 
 \begin{figure}[!htb]
 \includegraphics[width=\textwidth]{figures/handStretching.png}
@@ -179,7 +179,9 @@ The leap motion controller broke while we were trying to solve this issue, and w
 \label{fig:armsStretching}
 \end{figure}
 
-We got in touch with the person from the video again, and he gave us additional advice on how to handle this. The result can be observed in Figure \ref{fig:closeOutcome} and we can notice that the outcame is getting closer to what we wanted (Figure \ref{fig:handTrack}). Still, in order to achieve a more realistic effect, we must elevate our metahumans' hands to waist level.
+%We got in touch with the person from the video again, and he gave us additional advice on how to handle this. The result can be observed in Figure \ref{fig:closeOutcome} and we can notice that the outcame is getting closer to what we wanted (Figure \ref{fig:handTrack}). 
+
+Still, in order to achieve a more realistic effect, we must elevate our metahumans' hands to waist level.
 
 \begin{figure}[!htb]
 \includegraphics[width=\textwidth]{figures/handMinPosition.png}
@@ -200,26 +202,14 @@ To offset the metahumans' hands and raise them to waist height, we followed the 
 While trying to figure out how to get the fingers to work properly again, we received a new tip to not map the metacarpal bones of the fingers, which solved our problem. However, the arms started to stretch out indefinitely once more (Figure \ref{fig:armsStretching}). To solve this issue, we noticed that mapping the lower arm to none solved the problem, and thus we obtained our final result (Figure \ref{fig:handTrack}).
 
 \paragraph{Limitations}
-As was already noted, many studies think that hand gestures, along with facial expressions and spoken words, are important in expressing our emotions. In order to achieve our goal of deeper emotional recognition, including hand tracking to the existing prototype was a crucial step. Because hands are the most crucial nonverbal clues for identifying particular states in others, after facial expressions and body position \cite{WAX97, REI22}.
+As previously said, many studies believe that hand gestures, along with facial expressions and spoken words, are essential in expressing our emotions \cite{ARJ20, WAX97, REI22}. In order to achieve our goal of deeper emotional recognition, including hand tracking to the existing prototype was a crucial step. Because hands are the most crucial nonverbal clues for identifying particular states in others, after facial expressions and body position \cite{WAX97, REI22}.
 
 There are a number of ways to accomplish hand tracking, such as with virtual reality equipment or gloves, but we felt that the Leap Motion Controller was the ideal choice for this work because it is a useful and compact device that does not interfere with the face recognition component. This device, however, has significant limitations. There is a reliance on the usage of the USB cable for leap motion and unreal communication, and because it is an old device, acquiring it may be difficult. Additionally, infrared sensors may not function properly in bright environments, and turning on the HMD mode requires the Ultraleap Visualizer program rather than the blueprint configuration because doing so interferes with the hand tracking data.
 
 Last but not least, a 3D-printed dependency of two shirt clips is shown in Figure \ref{fig:CMDvsHMD} (b). In the beginning, only one shirt clip was required, however throughout the prototype tests, instability and imprecise hand tracking capture were detected. Although the two clips are currently functional, a more stable and user-friendly solution would be preferable.
 
-\subsubsection{Anonymous Panda User Interface}
-There was some feedback from friends and family on the prototype interface during several project demonstrations. Much of this feedback was connected to the lack of other metahumans, which were present but the opportunity to switch between them was not easily identified, and users were always forced to choose between the initial two metahumans since they were unaware of this option.
-In response to these critiques, we made an effort to develop a new user interface that was simpler to use and made all of the prototype's metahumans available at the time of user selection (Figure \ref{fig:newUI}). Since the prior study did not allow us to test the user interface with actual users, we were unable to identify this issue which could have been addressed earlier. We anticipate to get further feedback on this problem in the upcoming study by testing the User Interface (UI) with actual users and, if necessary, changing it.
-
-\begin{figure}[!htb]
-\includegraphics[width=\textwidth]{figures/startMenu.png}
-\includegraphics[width=\textwidth]{figures/metahumanMenu.png}
-\centering
-\caption{New Anonymous Panda UI}
-\label{fig:newUI}
-\end{figure}
-
 \subsection{Methodology}
-The purpose of this study is to put to the test an extended Technology Acceptance Model (TAM) created to study users' acceptance of our work, the Anonymous Panda. Furthermore, we want to see if virtual avatars can help promote interactants' verbal self-disclosure or not (\textbf{RQ\textsubscript{2}}).
+The purpose of this study is to put to the test an extended Technology Acceptance Model (TAM) created to study users' acceptance of our work, the Anonymous Panda. Furthermore, we want to assess if virtual avatars can help promote interactants' verbal self-disclosure or not (\textbf{RQ\textsubscript{2}}).
 
 Based on two user perceptions: perceived utility and perceived ease of use, the TAM estimates user intention to utilize a particular technology. Perceived usefulness is defined as "the amount to which a person believes that using a certain system will improve his or her job performance" \cite{DAV89}. In contrast, perceived ease of use is defined as "the degree to which a person believes that using a certain technology would be devoid of effort" \cite{DAV89}.
 
@@ -257,7 +247,7 @@ Participants were asked to fill out basic demographic questions (see Appendix \r
 
 The participants were then asked to complete a questionnaire designed to assess their perceived anonymity, online public disclosure, perceived usefulness, and perceived ease of use in response to their interaction with our prototype, as proposed by \cite{YUN06, HIT14}.
 
-As mentioned before, for the pre questionnaire (see Appendix \ref{appendix:pre2}) we used five questions to assess the participants' online public disclosure on a seven-point Likert-type scale (1=totally disagree, 7=totally agree), based on the work of Haejin Yun \cite{YUN06}. The five items used to test OPD were: "Usually, I am willing to share my family history and/or secrets", "Usually, I am willing to talk about my failures", "Usually, I am willing to express my most intimate feelings", "Usually, I am willing to talk about my shameful experiences", and "Usually, I am willing to share things I wouldn’t normally share with my family, friends and colleagues".
+For the pre questionnaire (see Appendix \ref{appendix:pre2}) we used five questions to assess the participants' online public disclosure on a seven-point Likert-type scale (1=totally disagree, 7=totally agree), based on the work of Haejin Yun \cite{YUN06}. The five items used to test OPD were: "Usually, I am willing to share my family history and/or secrets", "Usually, I am willing to talk about my failures", "Usually, I am willing to express my most intimate feelings", "Usually, I am willing to talk about my shameful experiences", and "Usually, I am willing to share things I wouldn’t normally share with my family, friends and colleagues".
 
 Regarding the post-questionnaire (see Appendix \ref{appendix:post2}), twenty questions divided into four categories were used, on a seven-point Likert-type scale (1=totally disagree, 7=totally agree), based on the works of Haejin Yun \cite{YUN06} and Hite et al. \cite{HIT14}. Through five questions, each category is responsible for evaluating the participants' perceived anonymity, online public disclosure, perceived usefulness, and perceived ease of use in response to their interaction with our prototype.
 
@@ -270,7 +260,7 @@ The following five items were used to assess the participants' PU: "Using Anonym
 Finally, in an open-ended question, participants could express their thoughts on our prototype, as well as what they disliked or thought could be improved. They could also share with us if they used a similar application to ours.
 
 \subsubsection{Hypotheses and Statistical Analyses}
-As previously stated, the goal of this study is to put to the test an extended TAM designed to study the users' acceptance of the Anonymous Panda. In addition, determine whether virtual avatars can promote interactants' verbal self-disclosure or not (\textbf{RQ\textsubscript{2}}). Therefore, we propose the three following hypotheses:
+The goal of this study is to put to the test an extended TAM designed to study the users' acceptance of the Anonymous Panda, and determine whether virtual avatars can promote interactants' verbal self-disclosure or not (\textbf{RQ\textsubscript{2}}). Therefore, we propose the three following hypotheses:
 
 \textbf{\textit{H}\textsubscript{1}} - PA has a positive effect on OPD.
 
@@ -278,9 +268,9 @@ As previously stated, the goal of this study is to put to the test an extended T
 
 \textbf{\textit{H}\textsubscript{3}} - PU has a positive effect on OPD.
 
-To test \textbf{\textit{H}\textsubscript{1}}-\textbf{\textit{H}\textsubscript{3}}, we attempted to determine whether the PA, OPD, PU, and PEU were correlated in any way. This required the use of the Spearman's Rank Correlation to determine whether or not there was a statistically significant correlation between these four variables.
+To test \textbf{\textit{H}\textsubscript{1}}-\textbf{\textit{H}\textsubscript{3}}, we used the Spearman's Rank correlation to determine if there was a statistically significant correlation between the four variables: PA, OPD, PU, and PEU.
 
-We also wanted to see if the participants' willingness to provide personal information online altered considerably before and after using the Anonymous Panda application. Due to the fact that participants were measured more than once for the dependent variable, a repeated measures analysis method was required. Therefore, we conducted a Wilcoxon signed-rank test to see whether the participants' willingness to disclose personal information online had changed compared to before they used the Anonymous Panda application. Cronbach's Alpha was also used to ensure the reliability of our questionnaire. Finally, using a statistical significance level of 0.05, all of this data was evaluated in the IBM SPSS statistics software (v.28, 2021).
+We also wanted to assess if the participants' willingness to provide personal information online altered considerably before and after using the Anonymous Panda application. Due to the fact that participants were measured more than once for the dependent variable, a repeated measures analysis method was required. Therefore, we conducted a Wilcoxon signed-rank test to evaluate whether the participants' willingness to disclose personal information online had changed compared to before they used the Anonymous Panda application. Cronbach's Alpha was also used to ensure the reliability of our questionnaire. Finally, using a statistical significance level of 0.05, all of this data was evaluated in the IBM SPSS statistics software (v.28, 2021).
 
 \subsubsection{Results}
 Tables \ref{tab:PA}, \ref{tab:OPD}, \ref{tab:PU}, and \ref{tab:PEU} describes the different items that have been asked regarding the users' acceptance of our application. The PA part consisted of 5 items ($\alpha$=.65), the OPD part consisted of 5 items ($\alpha$=.84), the PU part consisted of 5 items ($\alpha$=.89), and the PEU part consisted of 5 items ($\alpha$=.80).
@@ -333,7 +323,7 @@ To evaluate correlation between the PA, OPD, PU, and PEU, we conducted a Spearma
 \label{fig:scatterbox}
 \end{figure}
 
-These findings suggest that there are no statistically significant correlation that could support our \textbf{\textit{H}\textsubscript{1}}, implying that participants' perceived anonymity had little or no effect on the users' willingness to disclose personal information online. However, these results support our \textbf{\textit{H}\textsubscript{2}} and \textbf{\textit{H}\textsubscript{3}}, which state that participants' perceived anonymity effects their perceived usefulness and that participants' perceived usefulness increases users' willingness to disclose personal information online.
+These findings suggest that there are no statistically significant correlation that could support our \textbf{\textit{H}\textsubscript{1}}, namely that participants' perceived anonymity influences users' willingness to disclose personal information online. However, these results support our \textbf{\textit{H}\textsubscript{2}} and \textbf{\textit{H}\textsubscript{3}}, which state that participants' perceived anonymity effects their perceived usefulness and that participants' perceived usefulness increases users' willingness to disclose personal information online.
 
 Finally, to assess the difference in the participants' willingness to provide personal information online after using the Anonymous Panda app, a Wilcoxon signed-rank test was performed. The results demonstrated a statistically significant improvement in the users' willingness to disclose personal information online following the use of the application (\textit{Z}=-2.543, \textit{p}=.011), with a large effect size (\textit{r}=.57).
  
@@ -347,3 +337,16 @@ Concerning our \textbf{\textit{H\textsubscript{2}}}, we discovered a significant
 Similarly, we found a significant correlation between users' perceived usefulness and online public disclosure (\textbf{\textit{H\textsubscript{3}}}). This suggests that users are more likely to increase their ability to provide personal information online if they find the Anonymous Panda application useful. Other research \cite{ZHO18, SHA21} also has shown that perceived usefulness influences people's disclosure of personal information.
 
 Finally, we evaluate the difference of online public disclosure before and after using the anonymous panda app in order to validate our \textbf{RQ\textsubscript{2}} that virtual avatars could improve users' verbal self-disclosure. Our findings showed a statistically significant positive change in participants' willingness to disclose personal information online after using the anonymous panda app. However, these results could be easily distorted since we used a self-reported questionnaire, therefore there's a chance that individuals gave invalid answers \cite{DEM15}, and because our \textbf{\textit{H\textsubscript{1}}} was rejected, these results may not be related to the virtual avatars themselves.
+
+% Aqui podes falar também sobre limitaçoões: agora as pessoas não podem escolher o nome para se conectarem com o psicologo (isso levanta outras questões sobre privacidade e sobre a confiança que é preciso haver entre paciente-terapeuta...), etc etc -> a ideia nunca tinha passado por isso, pelo que não acho necessário introduzir isso aqui
+
+\subsection{Anonymous Panda User Interface}
+Most of the feedback collected during the prototype's demonstrations was related to the interface. The majority of this feedback was connected to the lack of other metahumans, which were present but the opportunity to switch between them was not easily identified, and users were always forced to choose between the initial two metahumans since they were unaware of this option. In response to these critiques, we made an effort to develop a new user interface that was simpler to use and made all of the prototype's metahumans available at the time of user selection (Figure \ref{fig:newUI}). Since the prior study did not allow us to test the user interface with actual users, we were unable to identify this issue which could have been addressed earlier. % We anticipate to get further feedback on this problem in the upcoming study by testing the User Interface (UI) with actual users and, if necessary, changing it.
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{figures/startMenu.png}
+\includegraphics[width=\textwidth]{figures/metahumanMenu.png}
+\centering
+\caption{New Anonymous Panda UI}
+\label{fig:newUI}
+\end{figure}
