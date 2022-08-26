@@ -1,5 +1,5 @@
 \section{The Anonymous Face Tracking Panda}
-As previously stated, living with a mental illness can be isolating and the stigma around mental health issues makes people hesitant to seek professional help \cite{HAM18}. The primary purpose of this thesis is to create a functional prototype capable of connecting people with mental health specialists anonymously, while still maintaining patient-therapist empathy.
+As previously stated, living with a mental illness can be isolating and the stigma around mental health issues makes people hesitant to seek professional help \cite{HAM18}. The primary purpose of this dissertation is to create a functional prototype capable of connecting people with mental health specialists anonymously, while still maintaining patient-therapist empathy.
 
 \subsection{Approach}
 A working prototype was developed using Unreal Engine Blueprints (a node-based interface to create gameplay elements), the UE4, Metahumans, and Live Link connected to an iPhone's camera. In the prototype, patients can communicate with mental health specialists via video conferencing anonymously, as patient's smartphone functions as a virtual camera that allows the mental health practitioner to see the patient's facial expressions in real-time via a virtual avatar.
@@ -58,7 +58,7 @@ However, upon a closer look, even though the avatar could accurately represent t
 \label{fig:blueprintAnimation}
 \end{figure}
 
-Although one of the foundations of this thesis is patient-therapist communication, the current prototype requires the user to share only the UE4 application as if it were a webcam, which necessitates the usage of a video conferencing tool as well as OBS Studio Virtual Camera, a live streaming tool (Figure \ref{fig:prototype} and \ref{fig:obs}). Even though this causes a slight delay, it can be used in a video conference.
+Although one of the foundations of this dissertation is patient-therapist communication, the current prototype requires the user to share only the UE4 application as if it were a webcam, which necessitates the usage of a video conferencing tool as well as OBS Studio Virtual Camera, a live streaming tool (Figure \ref{fig:prototype} and \ref{fig:obs}). Even though this causes a slight delay, it can be used in a video conference.
 
 \begin{figure}[!htb]
 \includegraphics[width=\textwidth]{figures/zoomAndDiscord.PNG}
@@ -75,7 +75,7 @@ Although one of the foundations of this thesis is patient-therapist communicatio
 \end{figure}
 
 \subsubsection{Limitations}
-One of the thesis's challenges is to use customized models because these models demand a lot of optimization. After all, they are resource-intensive, limiting the patient's expressions from being viewed clearly and fluidly. 
+One of the dissertation's challenges is to use customized models because these models demand a lot of optimization. After all, they are resource-intensive, limiting the patient's expressions from being viewed clearly and fluidly. 
 
 Nonetheless, the creation and use of custom metahumans has already improved thanks to recent contributions from Epic Games. However, because many assets are still in development, the design and use of metahumans are still limited. Meaning, if these assets are excluded, it should be possible to use metahumans other than those pre-defined by Epic Games. Despite Epic Games' warnings about using a metahuman with groom elements in development, as well as only displaying it in Levels of Detail (LOD) 0 and 1, some users ignored the warnings and attempted to import a custom metahuman into their projects, resulting in mesh issues (e.g. can be seen in Figure \ref{fig:metahumanProblem}). The many levels that make up each groom element's LODs set, which includes hair, mustache, beard, eye brows, eye lashes, and vellus (also called peach fuzz), are depicted in Figure \ref{fig:LOD}.
 
