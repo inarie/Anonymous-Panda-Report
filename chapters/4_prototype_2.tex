@@ -1,6 +1,7 @@
 \section{The Anonymous Face and Hand Tracking Panda}
-When reviewing and testing the Anonymous Face Tracking Panda prototype, we found that the virtual avatar's ability to express themselves was limited by the lack of hand movement, which made it seem unrealistic and similar to a puppet acting. Through this finding, we questioned if the addition of hand tracking would help increase interactants' verbal self-disclosure (\textbf{RQ\textsubscript{2}}) and perceived useful.
+Given the metahumans' limited ability to express themselves due to a lack of hand movement, we wondered if the addition of hand tracking would improve the prototype and achieve a higher level of realism while still allowing the user to express themselves through the metahuman on different degrees. Furthermore, we wondered if this change would increase interactants' verbal self-disclosure (\textbf{RQ\textsubscript{2}}) and perceived usefulness.
 
+\subsection{Importance of Hand Gestures}
 When people speak, they typically make spontaneous hand motions that occur in synchronization with speech and naturally accompany all spoken communication; such movements are known as gestures \cite{CLO20}. Gestures serve a diverse range of purposes in communication, learning, and comprehension for those who see them as well as those who make them. Gestures are particularly successful when they resemble the thought they represent, giving them an advantage over words since they offer relevant and distinct information while reflecting the speaker's underlying knowledge and experiences \cite{CLO20, KAN16B}. According to Feyereisen and de Lannoy \cite{FEY91}, people of all known cultures and languages make gestures. Hence gestures are essential for making connections with others, although styles vary across countries.
 
 Hand gestures, together with facial expressions and spoken words, play a vital role in communicating our feelings. To create emotional depiction, hand movements usually combine nontrivially with facial expressions \cite{ARJ20}. It is well known that a person who uses his hands powerfully while expressing his opinions attracts far more attention than a person who only uses his voice to convey an idea \cite{COO10, WAK18}.
@@ -343,4 +344,16 @@ Most of the feedback collected during the prototype's demonstrations was related
 \centering
 \caption{New Anonymous Panda UI}
 \label{fig:newUI}
+\end{figure}
+
+\subsection{Anonymous Panda Resources and Workflow}
+Because this work is far from complete and has a very important and useful theme, all development is open-source and available on GitLab at the following url: \url{https://gitlab.com/inarie/anonymous-panda}.
+
+To replicate the studies, an iPhone with a model equal to or greater than the XS is required for facial tracking and a leap motion for hand tracking as seen in Figure \ref{fig:setupChart}. The Live Link app must be installed on the iPhone, and the IP address of the computer running Anonymous Panda must be configured in this app so that all necessary data is communicated. For hand tracking, simply connect the Leap Motion via USB and place it in a support around the chest area, then install the UltraLeap Control Panel and keep it open while the computer was running Anonymous Panda.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=\linewidth]{figures/setupChart.png}
+\caption{Necessary Software and Hardware}
+\label{fig:setupChart}
 \end{figure}
